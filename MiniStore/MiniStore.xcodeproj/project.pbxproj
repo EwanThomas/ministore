@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE283787280829710052F565 /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE283786280829710052F565 /* RootTabBarController.swift */; };
+		DE28378C280829EF0052F565 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE28378B280829EF0052F565 /* ProductViewController.swift */; };
+		DE28378E280829FE0052F565 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE28378D280829FE0052F565 /* CartViewController.swift */; };
 		DE4EF9D028081A620017B4BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4EF9CF28081A620017B4BB /* AppDelegate.swift */; };
 		DE4EF9D228081A620017B4BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4EF9D128081A620017B4BB /* SceneDelegate.swift */; };
 		DE4EF9D428081A620017B4BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4EF9D328081A620017B4BB /* ViewController.swift */; };
@@ -36,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DE283786280829710052F565 /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
+		DE28378B280829EF0052F565 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		DE28378D280829FE0052F565 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		DE4EF9CC28081A620017B4BB /* MiniStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE4EF9CF28081A620017B4BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE4EF9D128081A620017B4BB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +82,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DE283780280828B40052F565 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				DE4EF9CF28081A620017B4BB /* AppDelegate.swift */,
+				DE4EF9D128081A620017B4BB /* SceneDelegate.swift */,
+				DE283781280828C70052F565 /* Main */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		DE283781280828C70052F565 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				DE283782280828DA0052F565 /* Product */,
+				DE283783280828E30052F565 /* Cart */,
+				DE283784280828F30052F565 /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		DE283782280828DA0052F565 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				DE283789280829DA0052F565 /* View */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		DE283783280828E30052F565 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				DE28378A280829E00052F565 /* View */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
+		DE283784280828F30052F565 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DE283786280829710052F565 /* RootTabBarController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DE283789280829DA0052F565 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DE28378B280829EF0052F565 /* ProductViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DE28378A280829E00052F565 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DE28378D280829FE0052F565 /* CartViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		DE4EF9C328081A620017B4BB = {
 			isa = PBXGroup;
 			children = (
@@ -99,8 +165,7 @@
 		DE4EF9CE28081A620017B4BB /* MiniStore */ = {
 			isa = PBXGroup;
 			children = (
-				DE4EF9CF28081A620017B4BB /* AppDelegate.swift */,
-				DE4EF9D128081A620017B4BB /* SceneDelegate.swift */,
+				DE283780280828B40052F565 /* App */,
 				DE4EF9D328081A620017B4BB /* ViewController.swift */,
 				DE4EF9D528081A620017B4BB /* Main.storyboard */,
 				DE4EF9D828081A630017B4BB /* Assets.xcassets */,
@@ -259,7 +324,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE4EF9D428081A620017B4BB /* ViewController.swift in Sources */,
+				DE283787280829710052F565 /* RootTabBarController.swift in Sources */,
 				DE4EF9D028081A620017B4BB /* AppDelegate.swift in Sources */,
+				DE28378C280829EF0052F565 /* ProductViewController.swift in Sources */,
+				DE28378E280829FE0052F565 /* CartViewController.swift in Sources */,
 				DE4EF9D228081A620017B4BB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
