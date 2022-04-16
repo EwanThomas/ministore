@@ -1,6 +1,6 @@
 import Foundation
 import UIKit
-
+ 
 struct TabBarDataSource: ViewControllerDataSource {
     enum ViewControllerType {
         case product
@@ -29,7 +29,7 @@ private extension TabBarDataSource {
     }
     
     var productViewController: UIViewController {
-        let controller = ProductViewController()
+        let controller = ProductsViewController()
         controller.tabBarItem = UITabBarItem(title: "Products", image: UIImage(named: "someImage.png"), selectedImage: UIImage(named: "otherImage.png"))
         return controller
     }
