@@ -7,7 +7,7 @@ final class MainViewController: UITabBarController {
     
     init(tabBarDataSource: ViewControllerDataSource = TabBarDataSource()) {
         self.tabBarDataSource = tabBarDataSource
-        super.init(nibName: String(describing: MainViewController.self), bundle: nil)
+        super.init(nibName: String(describing: MainViewController.self), bundle: .main)
     }
     
     required init?(coder: NSCoder) {
