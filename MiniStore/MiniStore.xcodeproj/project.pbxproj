@@ -14,7 +14,7 @@
 		DE2837952808420A0052F565 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE283794280842090052F565 /* MainViewController.xib */; };
 		DE283797280847AA0052F565 /* ViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE283796280847AA0052F565 /* ViewControllerDataSource.swift */; };
 		DE28379B28085DDD0052F565 /* ProductsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE28379A28085DDD0052F565 /* ProductsViewController.xib */; };
-		DE2837A228087D1C0052F565 /* ProductsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2837A128087D1C0052F565 /* ProductsService.swift */; };
+		DE2837A228087D1C0052F565 /* ProductService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2837A128087D1C0052F565 /* ProductService.swift */; };
 		DE2837A92808B4620052F565 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2837A62808B4620052F565 /* NetworkSession.swift */; };
 		DE2837AA2808B4620052F565 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2837A72808B4620052F565 /* Resource.swift */; };
 		DE2837AB2808B4620052F565 /* URLSession+URLSessionResourceLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2837A82808B4620052F565 /* URLSession+URLSessionResourceLoading.swift */; };
@@ -56,7 +56,7 @@
 		DE283794280842090052F565 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		DE283796280847AA0052F565 /* ViewControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerDataSource.swift; sourceTree = "<group>"; };
 		DE28379A28085DDD0052F565 /* ProductsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductsViewController.xib; sourceTree = "<group>"; };
-		DE2837A128087D1C0052F565 /* ProductsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsService.swift; sourceTree = "<group>"; };
+		DE2837A128087D1C0052F565 /* ProductService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductService.swift; sourceTree = "<group>"; };
 		DE2837A62808B4620052F565 /* NetworkSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
 		DE2837A72808B4620052F565 /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		DE2837A82808B4620052F565 /* URLSession+URLSessionResourceLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLSession+URLSessionResourceLoading.swift"; sourceTree = "<group>"; };
@@ -190,7 +190,7 @@
 		DE2837A028087D080052F565 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				DE2837A128087D1C0052F565 /* ProductsService.swift */,
+				DE2837A128087D1C0052F565 /* ProductService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -431,7 +431,7 @@
 				DE4EF9D228081A620017B4BB /* SceneDelegate.swift in Sources */,
 				DE283790280837AF0052F565 /* TabBarDataSource.swift in Sources */,
 				DE2837AE280955D40052F565 /* ProductCollectionViewCell.swift in Sources */,
-				DE2837A228087D1C0052F565 /* ProductsService.swift in Sources */,
+				DE2837A228087D1C0052F565 /* ProductService.swift in Sources */,
 				DE2837B5280991B00052F565 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

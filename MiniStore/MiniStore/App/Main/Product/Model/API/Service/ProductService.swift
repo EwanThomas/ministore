@@ -5,7 +5,7 @@ protocol ProductsServing {
 }
 
 enum ProductServiceError: Error {
-    case network
+    case error(description: String)
 }
 
 struct ProductService: ProductsServing {
@@ -16,11 +16,16 @@ struct ProductService: ProductsServing {
     }
     
     func load() async throws -> Products {
-        let resource = Resource(path: "/products")
         do {
-            return try await networkSession.loadResource(resource: resource)
-        } catch NetworkError.badResponse {
-            throw ProductServiceError.network
+            return try await networkSession.load(products)
+        } catch {
+            throw ProductServiceError.error(description: "an error occurred")
         }
+    }
+}
+
+private extension ProductService {
+    var products: Resource {
+        Resource(path: "/products")
     }
 }

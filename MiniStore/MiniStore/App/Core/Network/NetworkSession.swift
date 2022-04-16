@@ -1,7 +1,7 @@
 import Foundation
 
 protocol Networking {
-    func loadResource<Model: Codable>(resource: Resource) async throws -> Model
+    func load<Model: Codable>(_ resource: Resource) async throws -> Model
 }
 
 enum NetworkError: Error {
@@ -19,13 +19,13 @@ struct NetworkSession: Networking {
         self.urlSession = urlSession
     }
     
-    func loadResource<Model: Codable>(resource: Resource) async throws -> Model {
+    func load<Model: Codable>(_ resource: Resource) async throws -> Model {
         guard let url = resource.url else {
             throw NetworkError.badRequest
         }
         
         do {
-            let (data, response) = try await urlSession.loadResource(url: url)
+            let (data, response) = try await urlSession.load(url: url)
             
             guard let response = response as? HTTPURLResponse else {
                 throw NetworkError.badResponse

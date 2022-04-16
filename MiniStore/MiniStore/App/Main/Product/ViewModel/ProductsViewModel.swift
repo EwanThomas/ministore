@@ -6,7 +6,7 @@ final class ProductsViewModel {
     @Published var products: Products = []
     
     init(
-        service: ProductsServing = ProductAPI()
+        service: ProductsServing = ProductService()
     ) {
         self.service = service
     }
@@ -16,6 +16,7 @@ final class ProductsViewModel {
             do {
                 products = try await service.load()
             } catch {
+                //TODO: 
             }
         }
     }
