@@ -31,16 +31,24 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="hZv-KU-Q2n">
+                        <rect key="frame" x="38" y="16" width="94" height="32"/>
+                        <connections>
+                            <action selector="didTapProduct:" destination="-1" eventType="valueChanged" id="iys-Ok-Gsx"/>
+                        </connections>
+                    </stepper>
                 </subviews>
                 <constraints>
                     <constraint firstItem="5h7-Yy-Rkm" firstAttribute="top" secondItem="rQN-pN-GZk" secondAttribute="bottom" constant="16" id="6Bz-GR-S0u"/>
                     <constraint firstAttribute="trailing" secondItem="rQN-pN-GZk" secondAttribute="trailing" constant="16" id="6Oe-WE-bj1"/>
                     <constraint firstItem="5h7-Yy-Rkm" firstAttribute="top" secondItem="rQN-pN-GZk" secondAttribute="bottom" constant="16" id="A7z-Da-3fe"/>
+                    <constraint firstAttribute="trailing" secondItem="hZv-KU-Q2n" secondAttribute="trailing" constant="16" id="F0Z-DE-Xm1"/>
                     <constraint firstAttribute="trailing" secondItem="zPf-vI-Bsp" secondAttribute="trailing" constant="16" id="HWY-eW-pxg"/>
                     <constraint firstAttribute="trailing" secondItem="5h7-Yy-Rkm" secondAttribute="trailing" constant="16" id="TFs-5b-gBw"/>
                     <constraint firstItem="zPf-vI-Bsp" firstAttribute="top" secondItem="5h7-Yy-Rkm" secondAttribute="bottom" constant="16" id="WjQ-zc-YX9"/>
                     <constraint firstItem="rQN-pN-GZk" firstAttribute="top" secondItem="G3v-sc-Azl" secondAttribute="top" constant="16" id="YsX-Py-6vM"/>
                     <constraint firstItem="rQN-pN-GZk" firstAttribute="leading" secondItem="G3v-sc-Azl" secondAttribute="leading" constant="16" id="por-xd-Gdq"/>
+                    <constraint firstItem="hZv-KU-Q2n" firstAttribute="top" secondItem="G3v-sc-Azl" secondAttribute="top" constant="16" id="qt1-Jh-xEL"/>
                     <constraint firstAttribute="bottom" secondItem="zPf-vI-Bsp" secondAttribute="bottom" constant="16" id="rs0-Wf-Heq"/>
                     <constraint firstItem="zPf-vI-Bsp" firstAttribute="top" secondItem="5h7-Yy-Rkm" secondAttribute="bottom" constant="16" id="spD-uI-crh"/>
                     <constraint firstItem="5h7-Yy-Rkm" firstAttribute="leading" secondItem="G3v-sc-Azl" secondAttribute="leading" constant="16" id="yAs-Gs-iQg"/>
@@ -50,9 +58,10 @@
             <size key="customSize" width="148" height="230"/>
             <connections>
                 <outlet property="backgroundView" destination="G3v-sc-Azl" id="0wf-7k-3WQ"/>
-                <outlet property="productDescription" destination="zPf-vI-Bsp" id="5lb-xr-bve"/>
-                <outlet property="productImage" destination="rQN-pN-GZk" id="8FP-oI-qho"/>
-                <outlet property="productPriceLabel" destination="5h7-Yy-Rkm" id="Tqd-wR-Y71"/>
+                <outlet property="descriptionLabel" destination="zPf-vI-Bsp" id="5lb-xr-bve"/>
+                <outlet property="imageView" destination="rQN-pN-GZk" id="8FP-oI-qho"/>
+                <outlet property="priceLabel" destination="5h7-Yy-Rkm" id="Tqd-wR-Y71"/>
+                <outlet property="productStepper" destination="hZv-KU-Q2n" id="0nv-6h-XRV"/>
             </connections>
             <point key="canvasLocation" x="-695.6521739130435" y="-115.17857142857142"/>
         </collectionViewCell>
