@@ -1,9 +1,8 @@
 import Foundation
 import UIKit
 
-final class ProductCollectionViewCell: UICollectionViewCell {
-    static let identifier = String(describing: ProductCollectionViewCell.self)
-    static let nib = UINib(nibName: identifier, bundle: .main)
+final class ProductViewCell: UICollectionViewCell {
+    static let identifier = String(describing: ProductViewCell.self)
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
@@ -33,7 +32,7 @@ final class ProductCollectionViewCell: UICollectionViewCell {
     }
 }
 
-private extension ProductCollectionViewCell {
+private extension ProductViewCell {
     func setup() {
         productStepper.autorepeat = false
         productStepper.wraps = false

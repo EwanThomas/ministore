@@ -39,7 +39,7 @@ private extension ProductsViewController {
     func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(ProductCollectionViewCell.nib, forCellWithReuseIdentifier: ProductCollectionViewCell.identifier)
+        collectionView.register(ProductsViewController.cellNib, forCellWithReuseIdentifier: ProductViewCell.identifier)
     }
     
     func viewModel(at indexPath: IndexPath) -> ProductCellViewModel {
@@ -50,7 +50,7 @@ private extension ProductsViewController {
 
 extension ProductsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.identifier, for: indexPath) as? ProductCollectionViewCell else { fatalError() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductViewCell.identifier, for: indexPath) as? ProductViewCell else { fatalError() }
         let viewModel = viewModel(at: indexPath)
         cell.configure(with: viewModel)
         return cell
@@ -67,3 +67,6 @@ extension ProductsViewController: UICollectionViewDelegate, UICollectionViewData
     }
 }
 
+private extension ProductsViewController {
+    static let cellNib = UINib(nibName: "ProductCollectionViewCell", bundle: .main)
+}
