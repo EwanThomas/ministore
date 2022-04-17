@@ -15,7 +15,7 @@ final class Cart {
     private(set) var store: Orders
     
     var total: Double {
-        return 1000
+        return 0
     }
     
     private init(

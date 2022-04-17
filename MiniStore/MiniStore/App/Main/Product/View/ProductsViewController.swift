@@ -41,12 +41,18 @@ private extension ProductsViewController {
         collectionView.delegate = self
         collectionView.register(ProductCollectionViewCell.nib, forCellWithReuseIdentifier: ProductCollectionViewCell.identifier)
     }
+    
+    func viewModel(at indexPath: IndexPath) -> ProductCellViewModel {
+        let product = viewModel.products[indexPath.row]
+        return ProductCellViewModel(product: product)
+    }
 }
 
 extension ProductsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.identifier, for: indexPath as IndexPath) as! ProductCollectionViewCell
-        cell.configure(with: viewModel.products[indexPath.row])
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.identifier, for: indexPath) as? ProductCollectionViewCell else { fatalError() }
+        let viewModel = viewModel(at: indexPath)
+        cell.configure(with: viewModel)
         return cell
     }
     
