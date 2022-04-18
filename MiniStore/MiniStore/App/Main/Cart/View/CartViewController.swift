@@ -5,11 +5,11 @@ import UIKit
 final class CartViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private let viewModel: ProductsViewModel
+    private let viewModel: CartViewModel
     private var subscriptions = Set<AnyCancellable>()
     
     init(
-        viewModel: ProductsViewModel = ProductsViewModel()
+        viewModel: CartViewModel = CartViewModel()
     ) {
         self.viewModel = viewModel
         super.init(nibName: String(describing: CartViewController.self), bundle: .main)
@@ -21,12 +21,23 @@ final class CartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCollectionView()
+        bind(to: viewModel)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.load()
     }
 }
 
 private extension CartViewController {
-    func bind(to: ProductsViewModel) {
-     
+    func bind(to: CartViewModel) {
+        viewModel.$products
+            .receive(on: DispatchQueue.main)
+            .sink { [unowned self] _ in
+                self.collectionView.reloadData()
+            }.store(in: &subscriptions)
     }
     
     func setupCollectionView() {
@@ -51,6 +62,12 @@ extension CartViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.products.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let padding: CGFloat =  10
+        let collectionViewSize = collectionView.frame.size.width - padding
+        return CGSize(width: collectionViewSize, height: collectionViewSize/2)
     }
 }
 

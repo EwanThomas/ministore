@@ -23,6 +23,10 @@ final class ProductsViewController: UIViewController {
         super.viewDidLoad()
         setupCollectionView()
         bind(to: viewModel)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         viewModel.load()
     }
 }

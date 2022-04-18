@@ -20,11 +20,12 @@ final class ProductViewCell: UICollectionViewCell {
         self.viewModel = viewModel
         priceLabel.text = viewModel.priceText
         descriptionLabel.text = viewModel.descriptionText
-        productStepper.value = Double(viewModel.numberInCart)
+        productStepper.value = Double(viewModel.cartCount)
+        productStepper.maximumValue = Double(viewModel.limitOrder)
     }
     
     @IBAction func didTapProduct(_ sender: UIStepper) {
-        viewModel?.stepperValueDidChange(newValue: UInt(sender.value))
+        viewModel?.stepperValueDidChange(newValue: Int(sender.value))
     }
     
     override func prepareForReuse() {
@@ -36,6 +37,5 @@ private extension ProductViewCell {
     func setup() {
         productStepper.autorepeat = false
         productStepper.wraps = false
-        productStepper.maximumValue = 5
     }
 }
