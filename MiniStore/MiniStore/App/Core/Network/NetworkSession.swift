@@ -23,10 +23,8 @@ struct NetworkSession: Networking {
         guard let url = resource.url else {
             throw NetworkError.badRequest
         }
-        
         do {
             let (data, response) = try await urlSession.load(url: url)
-            
             guard let response = response as? HTTPURLResponse else {
                 throw NetworkError.badResponse
             }
@@ -36,8 +34,9 @@ struct NetworkSession: Networking {
             default:
                 throw NetworkError.badStatusCode
             }
-        } catch {
-            throw NetworkError.unknown
+        } catch let error {
+            print("Network Error")
+            throw error
         }
     }
 }

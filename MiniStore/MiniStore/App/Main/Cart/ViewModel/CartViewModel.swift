@@ -2,15 +2,15 @@ import Combine
 import Foundation
 
 final class CartViewModel {
-    @Published var products: Products = []
-    @Published var numberOfItems: String = ""
-    @Published var invoiceTotal: String = ""
+    @Published private(set) var products: Products = []
+    @Published private(set) var numberOfItems: String = ""
+    @Published private(set) var invoiceTotal: String = ""
     
-    private let cart: CartStoring
+    private let cart: CartPublishing
     private var cancellables: Set<AnyCancellable> = []
 
     init(
-        cart: CartStoring = Cart.shared
+        cart: CartPublishing = Cart.shared
     ) {
         self.cart = cart
         bind(to: cart)
@@ -18,15 +18,14 @@ final class CartViewModel {
 }
 
 private extension CartViewModel {
-    func bind(to cart: CartStoring) {
+    func bind(to cart: CartPublishing) {
         cart.productPublisher.sink { [weak self] products in
             self?.products = products
         }.store(in: &cancellables)
         
         cart.invoicePublisher.sink { [weak self] invoice in
             self?.numberOfItems = "item count: \(invoice.itemCount)"
-            self?.invoiceTotal = "total: \(invoice.total)"
+            self?.invoiceTotal = "total: \(invoice.total.formatted)"
         }.store(in: &cancellables)
     }
 }
-

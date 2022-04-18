@@ -1,24 +1,26 @@
 import Combine
 import Foundation
 
-protocol CartStoring {
+protocol CartPublishing {
     var productPublisher: PassthroughSubject<[Product], Never> { get }
     var invoicePublisher: PassthroughSubject<Invoice, Never> { get }
-    
+}
+
+protocol CartUpdating {
     func add(_ product: Product)
     func remove(_ product: Product)
     func productCount(matching product: Product) -> Int
 }
 
-final class Cart: CartStoring {
-    var productPublisher = PassthroughSubject<[Product], Never>()
-    var invoicePublisher = PassthroughSubject<Invoice, Never>()
+final class Cart: CartUpdating, CartPublishing {
+    private(set) var productPublisher = PassthroughSubject<[Product], Never>()
+    private(set) var invoicePublisher = PassthroughSubject<Invoice, Never>()
     
     static let shared = Cart()
     
     private var checkout: Cart.Checkout
     
-    init(checkout: Checkout = Checkout()) {
+    private init(checkout: Checkout = Checkout()) {
         self.checkout = checkout
     }
     
@@ -30,7 +32,7 @@ final class Cart: CartStoring {
     }
     
     func remove(_ product: Product) {
-        checkout.delete(product)
+        checkout.remove(product)
         productPublisher.send(products)
         let invoice = Invoice(itemCount: checkout.items, total: checkout.total)
         invoicePublisher.send(invoice)
@@ -78,7 +80,7 @@ extension Cart {
             }
         }
         
-        func delete(_ product: Product) {
+        func remove(_ product: Product) {
             if let existingOrder = backingStore[product.id] {
                 switch existingOrder.quantity {
                 case 1:

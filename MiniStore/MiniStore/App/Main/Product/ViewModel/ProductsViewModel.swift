@@ -3,7 +3,7 @@ import Foundation
 final class ProductsViewModel {
     private let actions: Actions
     
-    @Published var products: Products = []
+    @Published private(set) var products: Products = []
     
     init(
         actions: Actions = .init()
@@ -16,7 +16,7 @@ final class ProductsViewModel {
             do {
                 products = try await actions.reload()
             } catch {
-                //TODO: 
+                throw error
             }
         }
     }

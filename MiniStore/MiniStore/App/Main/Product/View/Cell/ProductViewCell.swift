@@ -21,7 +21,7 @@ final class ProductViewCell: UICollectionViewCell {
         priceLabel.text = viewModel.priceText
         descriptionLabel.text = viewModel.descriptionText
         productStepper.value = Double(viewModel.cartCount)
-        productStepper.maximumValue = Double(viewModel.limitOrder)
+        productStepper.maximumValue = Double(viewModel.limit)
     }
     
     @IBAction func didTapProduct(_ sender: UIStepper) {
