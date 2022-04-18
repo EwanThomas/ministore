@@ -11,7 +11,7 @@ final class ProductsViewModel {
         self.actions = actions
     }
     
-    func load() {
+    func reload() {
         Task {
             do {
                 products = try await actions.reload()

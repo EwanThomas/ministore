@@ -1,13 +1,19 @@
+import Combine
 import Foundation
 
 protocol CartStoring {
-    var products: [Product] { get }
+    var productPublisher: PassthroughSubject<[Product], Never> { get }
+    var invoicePublisher: PassthroughSubject<Invoice, Never> { get }
+    
     func add(_ product: Product)
     func remove(_ product: Product)
     func productCount(matching product: Product) -> Int
 }
 
 final class Cart: CartStoring {
+    var productPublisher = PassthroughSubject<[Product], Never>()
+    var invoicePublisher = PassthroughSubject<Invoice, Never>()
+    
     static let shared = Cart()
     
     private var checkout: Cart.Checkout
@@ -18,10 +24,16 @@ final class Cart: CartStoring {
     
     func add(_ product: Product) {
         checkout.add(product)
+        productPublisher.send(products)
+        let invoice = Invoice(itemCount: checkout.items, total: checkout.total)
+        invoicePublisher.send(invoice)
     }
     
     func remove(_ product: Product) {
         checkout.delete(product)
+        productPublisher.send(products)
+        let invoice = Invoice(itemCount: checkout.items, total: checkout.total)
+        invoicePublisher.send(invoice)
     }
     
     var products: [Product] {
@@ -46,7 +58,11 @@ extension Cart {
         }
         
         var total: Double {
-            return 0
+            orders.reduce(0) { $0 + $1.total }
+        }
+        
+        var items: Int {
+            orders.reduce(0) { $0 + $1.quantity }
         }
         
         func orderCount(for product: Product) -> Int {
@@ -57,7 +73,7 @@ extension Cart {
             if let existingOrder = backingStore[product.id] {
                 existingOrder.quantity += 1
             } else {
-                let newOrder = ProductOrder(product: product, quantity: 1)
+                let newOrder = ProductOrder(product: product)
                 backingStore[product.id] = newOrder
             }
         }

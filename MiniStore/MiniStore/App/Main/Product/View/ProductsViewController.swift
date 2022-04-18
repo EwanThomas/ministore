@@ -17,7 +17,7 @@ final class ProductsViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
+    } 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ final class ProductsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.load()
+        viewModel.reload()
     }
 }
 
@@ -35,8 +35,8 @@ private extension ProductsViewController {
     func bind(to: ProductsViewModel) {
         viewModel.$products
             .receive(on: DispatchQueue.main)
-            .sink { [unowned self] _ in
-                self.collectionView.reloadData()
+            .sink { [weak self] _ in
+                self?.collectionView.reloadData()
             }.store(in: &subscriptions)
     }
     

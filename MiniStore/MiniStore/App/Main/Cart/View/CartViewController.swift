@@ -4,6 +4,8 @@ import UIKit
 
 final class CartViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var itemCountLabel: UILabel!
+    @IBOutlet weak var checkoutTotalLabel: UILabel!
     
     private let viewModel: CartViewModel
     private var subscriptions = Set<AnyCancellable>()
@@ -24,19 +26,20 @@ final class CartViewController: UIViewController {
         setupCollectionView()
         bind(to: viewModel)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        viewModel.load()
-    }
 }
 
 private extension CartViewController {
     func bind(to: CartViewModel) {
         viewModel.$products
             .receive(on: DispatchQueue.main)
-            .sink { [unowned self] _ in
-                self.collectionView.reloadData()
+            .sink { [weak self] _ in
+                self?.collectionView.reloadData()
+            }.store(in: &subscriptions)
+
+        viewModel.$products
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.update()
             }.store(in: &subscriptions)
     }
     
@@ -49,6 +52,11 @@ private extension CartViewController {
     func viewModel(at indexPath: IndexPath) -> ProductCellViewModel {
         let product = viewModel.products[indexPath.row]
         return ProductCellViewModel(product: product)
+    }
+    
+    func update() {
+        itemCountLabel.text = viewModel.numberOfItems
+        checkoutTotalLabel.text = viewModel.invoiceTotal
     }
 }
 

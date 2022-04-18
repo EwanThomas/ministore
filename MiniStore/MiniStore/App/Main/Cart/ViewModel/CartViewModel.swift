@@ -1,31 +1,32 @@
+import Combine
 import Foundation
 
 final class CartViewModel {
-    private let actions: Actions
-    
     @Published var products: Products = []
+    @Published var numberOfItems: String = ""
+    @Published var invoiceTotal: String = ""
     
+    private let cart: CartStoring
+    private var cancellables: Set<AnyCancellable> = []
+
     init(
-        actions: Actions = .init()
+        cart: CartStoring = Cart.shared
     ) {
-        self.actions = actions
-    }
-    
-    func load() {
-        products = actions.reload()
+        self.cart = cart
+        bind(to: cart)
     }
 }
 
-extension CartViewModel {
-    struct Actions {
-        var reload: () -> Products
+private extension CartViewModel {
+    func bind(to cart: CartStoring) {
+        cart.productPublisher.sink { [weak self] products in
+            self?.products = products
+        }.store(in: &cancellables)
+        
+        cart.invoicePublisher.sink { [weak self] invoice in
+            self?.numberOfItems = "item count: \(invoice.itemCount)"
+            self?.invoiceTotal = "total: \(invoice.total)"
+        }.store(in: &cancellables)
     }
 }
 
-extension CartViewModel.Actions {
-    init(cart: CartStoring = Cart.shared) {
-        reload = {
-            cart.products
-        }
-    }
-}
