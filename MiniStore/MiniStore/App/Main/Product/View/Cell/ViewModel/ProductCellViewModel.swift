@@ -3,8 +3,10 @@ import Foundation
 struct ProductCellViewModel {
     var priceText: String { String(product.price) } //TODO: format
     var descriptionText: String { product.productDescription }
-    var numberInCart: Int {
-        count(numberOf: product)
+    var limitOrder: Int { 5 }
+    
+    var cartCount: Int {
+        quantity(product: product)
     }
 
     private let actions: Actions
@@ -18,8 +20,8 @@ struct ProductCellViewModel {
         self.actions = actions
     }
     
-    func stepperValueDidChange(newValue: UInt) {
-        newValue > numberInCart ? add() : remove()
+    func stepperValueDidChange(newValue: Int) {
+        newValue > cartCount ? add() : remove()
     }
 }
 
@@ -27,20 +29,20 @@ extension ProductCellViewModel {
     struct Actions {
         var add: (_ product: Product) -> Void
         var remove: (_ product: Product) -> Void
-        var countOf: (_ product: Product) -> Int
+        var quantityOf: (_ product: Product) -> Int
     }
 }
 
 extension ProductCellViewModel.Actions {
-    init(model: ProductStoring = Cart.shared) {
+    init(cart: CartStoring = Cart.shared) {
         add = { product in
-            model.add(product)
+            cart.add(product)
         }
         remove = { product in
-            model.remove(product)
+            cart.remove(product)
         }
-        countOf = { product in
-            return model.count(of: product)
+        quantityOf = { product in
+            cart.productCount(matching: product)
         }
     }
 }
@@ -54,7 +56,7 @@ private extension ProductCellViewModel {
         actions.remove(product)
     }
     
-    func count(numberOf product: Product) -> Int {
-        return actions.countOf(product)
+    func quantity(product: Product) -> Int {
+        return actions.quantityOf(product)
     }
 }
