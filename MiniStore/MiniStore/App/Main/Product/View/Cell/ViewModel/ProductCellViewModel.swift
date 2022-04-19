@@ -11,11 +11,11 @@ struct ProductCellViewModel {
     }
 
     private let product: Product
-    private let cart: CartUpdating
+    private let cart: ProductStorable
     
     init(
         product: Product,
-        cart: CartUpdating = Cart.shared
+        cart: ProductStorable = Cart.shared
     ) {
         self.product = product
         self.cart = cart

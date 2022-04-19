@@ -1,7 +1,7 @@
 import Foundation
 @testable import MiniStore
 
-final class MockCart: CartUpdating {
+final class MockCart: ProductStorable {
     var addCallCount: Int = 0
     var addSpy: Product? = nil
     func add(_ product: Product) {

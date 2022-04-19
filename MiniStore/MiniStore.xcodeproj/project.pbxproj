@@ -39,6 +39,7 @@
 		DEBA54C0280DD804004CE225 /* Product+Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBA54BF280DD804004CE225 /* Product+Stub.swift */; };
 		DEBA54C2280DD822004CE225 /* MockCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBA54C1280DD822004CE225 /* MockCart.swift */; };
 		DEBA54C5280DDD4E004CE225 /* Double+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBA54C4280DDD4E004CE225 /* Double+Formatting.swift */; };
+		DEBA54CA280E9CEE004CE225 /* CartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBA54C9280E9CEE004CE225 /* CartTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		DEBA54BF280DD804004CE225 /* Product+Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Product+Stub.swift"; sourceTree = "<group>"; };
 		DEBA54C1280DD822004CE225 /* MockCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCart.swift; sourceTree = "<group>"; };
 		DEBA54C4280DDD4E004CE225 /* Double+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Formatting.swift"; sourceTree = "<group>"; };
+		DEBA54C9280E9CEE004CE225 /* CartTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -367,17 +369,18 @@
 			children = (
 				DEBA54BE280DD7ED004CE225 /* Stub */,
 				DEBA54BD280DD7E5004CE225 /* Mocks */,
-				DEBA54BA280DCD0B004CE225 /* ViewModel */,
+				DEBA54BA280DCD0B004CE225 /* Tests */,
 			);
 			path = Main;
 			sourceTree = "<group>";
 		};
-		DEBA54BA280DCD0B004CE225 /* ViewModel */ = {
+		DEBA54BA280DCD0B004CE225 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				DEBA54BB280DCD71004CE225 /* ProductCellViewModelTests.swift */,
+				DEBA54C9280E9CEE004CE225 /* CartTests.swift */,
 			);
-			path = ViewModel;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		DEBA54BD280DD7E5004CE225 /* Mocks */ = {
@@ -569,6 +572,7 @@
 				DEBA54BC280DCD71004CE225 /* ProductCellViewModelTests.swift in Sources */,
 				DEBA54C0280DD804004CE225 /* Product+Stub.swift in Sources */,
 				DEBA54C2280DD822004CE225 /* MockCart.swift in Sources */,
+				DEBA54CA280E9CEE004CE225 /* CartTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
