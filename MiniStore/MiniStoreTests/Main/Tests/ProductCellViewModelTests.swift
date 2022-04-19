@@ -17,18 +17,19 @@ class ProductCellViewModelTests: XCTestCase {
     override func tearDownWithError() throws {
         try super.tearDownWithError()
         mockCart = nil
+        stubProduct = nil
         subject = nil
     }
     
     func test_stepperValueDidChange_whenNewValue_greaterThan_cartCount_addsProductToCart() throws {
-        mockCart.quantityForProductStub = 2
+        mockCart.quantityForProductStub = .stub(product: stubProduct, quantity: 2)
         subject.stepperValueDidChange(newValue: 3)
         XCTAssertEqual(mockCart.addCallCount, 1)
         XCTAssertEqual(mockCart.addSpy, stubProduct)
     }
 
     func test_stepperValueDidChange_whenNewValue_lessThan_cartCount_removesProductFromCart() throws {
-        mockCart.quantityForProductStub = 3
+        mockCart.quantityForProductStub = .stub(product: stubProduct, quantity: 3)
         subject.stepperValueDidChange(newValue: 2)
         XCTAssertEqual(mockCart.removeCallCount, 1)
         XCTAssertEqual(mockCart.removeSpy, stubProduct)
@@ -50,8 +51,11 @@ class ProductCellViewModelTests: XCTestCase {
         XCTAssertEqual(subject.limit, 5)
     }
     
-    func test_cartCount() throws {
-        mockCart.quantityForProductStub = 100
+    func test_cartQuantity_isExpectedValue() throws {
+        let mockCart = MockCart()
+        let stubProduct = Product.stub()
+        mockCart.quantityForProductStub = .stub(product: stubProduct, quantity: 100)
+        let subject = ProductCellViewModel(product: stubProduct, cart: mockCart)
         XCTAssertEqual(subject.cartQuantity, 100)
     }
 }

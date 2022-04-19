@@ -30,13 +30,18 @@ private extension TabBarDataSource {
     
     var productViewController: UIViewController {
         let controller = ProductsViewController()
-        controller.tabBarItem = UITabBarItem(title: "Products", image: UIImage(named: "someImage.png"), selectedImage: UIImage(named: "otherImage.png"))
+        let config = UIImage.SymbolConfiguration(scale: .large)
+        let icon = UIImage(systemName: "bag", withConfiguration: config)
+        controller.tabBarItem = UITabBarItem(title: "Products", image: icon, selectedImage: icon)
         return controller
     }
     
     var cartViewController: UIViewController {
         let controller = CartViewController()
-        controller.tabBarItem = UITabBarItem(title: "Store Cart", image: UIImage(named: "someImage.png"), selectedImage: UIImage(named: "otherImage.png"))
+        let config = UIImage.SymbolConfiguration(scale: .large)
+        let icon = UIImage(systemName: "cart.fill", withConfiguration: config)
+        controller.tabBarItem = UITabBarItem(title: "Store Cart", image: icon, selectedImage: icon)
         return controller
     }
 }
+

@@ -56,6 +56,23 @@ class CartTests: XCTestCase {
         XCTAssertEqual(subject.invoive, expectedInvoice)
     }
 
+    //MARK: Quantity
+    
+    func test_quantityForProduct_whenProductIsNotInCart_returnsExpectedQuantity() throws {
+        let product = Product.stub()
+        let expectedQuantity = ProductQuantity(product: product, quantity: 0)
+        XCTAssertEqual(subject.quantity(for: product), expectedQuantity)
+    }
+    
+    func test_quantityForProduct_whenProductIsInCart_returnsExpectedQuantity() throws {
+        let product = Product.stub()
+        simulateAdding(items: [product])
+        let expectedQuantity = ProductQuantity(product: product, quantity: 1)
+        XCTAssertEqual(subject.quantity(for: product), expectedQuantity)
+    }
+
+    //MARK: State Publishing
+    
     func test_add_publishes_invoice() throws {
         let expectation = self.expectation(description: "test_add_publishes_invoice")
         subject.invoicePublisher.sink { _ in
@@ -74,6 +91,26 @@ class CartTests: XCTestCase {
         subject.remove(.stub())
         waitForExpectations(timeout: 10)
     }
+
+    func test_add_publishes_productQuantity() throws {
+        let expectation = self.expectation(description: "test_add_publishes_productQuantity")
+        subject.quantityPublisher.sink { _ in
+            expectation.fulfill()
+        }.store(in: &subscriptions)
+        
+        subject.add(.stub())
+        waitForExpectations(timeout: 10)
+    }
+    
+    func test_remove_publishes_productQuantity() throws {
+        let expectation = self.expectation(description: "test_remove_publishes_productQuantity")
+        subject.quantityPublisher.sink { _ in
+            expectation.fulfill()
+        }.store(in: &subscriptions)
+        subject.remove(.stub())
+        waitForExpectations(timeout: 10)
+    }
+
     
     //MARK: Helper
     

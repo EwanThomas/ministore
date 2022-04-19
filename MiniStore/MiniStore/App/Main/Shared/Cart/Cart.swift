@@ -1,22 +1,19 @@
 import Combine
 import Foundation
 
-protocol ProductInvoiceable {
+protocol CartInvoicePublishing {
     var invoicePublisher: PassthroughSubject<Invoice, Never> { get }
     var invoive: Invoice { get }
-}
-
-protocol ProductQuantitying {
-    var quantityPublisher: PassthroughSubject<ProductQuantity, Never> { get }
 }
 
 protocol ProductStorable {
     func add(_ product: Product)
     func remove(_ product: Product)
-    func quantity(for product: Product) -> Int
+    func quantity(for product: Product) -> ProductQuantity
+    var quantityPublisher: PassthroughSubject<ProductQuantity, Never> { get }
 }
 
-final class Cart: ProductStorable, ProductInvoiceable, ProductQuantitying {
+final class Cart: ProductStorable, CartInvoicePublishing {
     private var backingStore: [Int: ProductOrder]
     
     static let shared = Cart()
@@ -33,11 +30,9 @@ final class Cart: ProductStorable, ProductInvoiceable, ProductQuantitying {
         Invoice(products: products, itemCount: invoiceItems, total: invoiceTotal)
     }
 
-    //MARK: ProductQuantitying
-    
-    private(set) var quantityPublisher = PassthroughSubject<ProductQuantity, Never>()
-
     //MARK: ProductStorable
+
+    private(set) var quantityPublisher = PassthroughSubject<ProductQuantity, Never>()
     
     func add(_ product: Product) {
         upsert(product)
@@ -53,8 +48,8 @@ final class Cart: ProductStorable, ProductInvoiceable, ProductQuantitying {
         publishQuantityChanged(for: product)
     }
 
-    func quantity(for product: Product) -> Int {
-        order(for: product)?.quantity ?? 0
+    func quantity(for product: Product) -> ProductQuantity {
+        ProductQuantity(product: product, quantity: order(for: product)?.quantity ?? 0)
     }
 }
 
@@ -103,12 +98,10 @@ private extension Cart {
     //MARK: Publish new state
     
     func publishInvoiceChanged() {
-        let invoice = Invoice(products: products, itemCount: invoiceItems, total: invoiceTotal)
-        invoicePublisher.send(invoice)
+        invoicePublisher.send(invoive)
     }
     
     func publishQuantityChanged(for product: Product) {
-        let productQuantity = ProductQuantity(product: product, quantity: quantity(for: product))
-        quantityPublisher.send(productQuantity)
+        quantityPublisher.send(quantity(for: product))
     }
 }

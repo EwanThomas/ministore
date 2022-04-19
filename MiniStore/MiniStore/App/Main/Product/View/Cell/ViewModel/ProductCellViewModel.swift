@@ -11,12 +11,12 @@ final class ProductCellViewModel {
     @Published private(set) var cartQuantity: Int = 0
     
     private let product: Product
-    private let cart: ProductStorable & ProductQuantitying
+    private let cart: ProductStorable
     private var subscriptions: Set<AnyCancellable> = []
     
     init(
         product: Product,
-        cart: ProductStorable & ProductQuantitying = Cart.shared
+        cart: ProductStorable = Cart.shared
     ) {
         self.product = product
         self.cart = cart
@@ -30,7 +30,7 @@ final class ProductCellViewModel {
 }
 
 private extension ProductCellViewModel {
-    func bind(to cart: ProductQuantitying) {
+    func bind(to cart: ProductStorable) {
         cart.quantityPublisher.sink { [weak self] value in
             guard self?.product == value.product else { return }
             self?.cartQuantity = value.quantity
@@ -46,6 +46,6 @@ private extension ProductCellViewModel {
     }
     
     func cartQuantity(of: Product) -> Int {
-        cart.quantity(for: product)
+        cart.quantity(for: product).quantity
     }
 }
