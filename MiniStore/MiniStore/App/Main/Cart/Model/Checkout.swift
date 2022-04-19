@@ -1,6 +1,7 @@
 import Foundation
 
-struct Invoice {
+struct Invoice: Equatable {
+    let products: [Product]
     let itemCount: Int
     let total: Double
 }

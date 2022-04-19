@@ -1,23 +1,24 @@
 import Foundation
 
 struct ProductCellViewModel {
-    var priceText: String { String(product.price) } //TODO: format
+    var title: String { product.title }
+    var priceText: String { product.price.formatted }
     var descriptionText: String { product.productDescription }
-    var limitOrder: Int { 5 }
+    var limit: Int { 5 }
     
     var cartCount: Int {
         quantity(product: product)
     }
 
-    private let actions: Actions
     private let product: Product
+    private let cart: ProductStorable
     
     init(
         product: Product,
-        actions: Actions = .init()
+        cart: ProductStorable = Cart.shared
     ) {
         self.product = product
-        self.actions = actions
+        self.cart = cart
     }
     
     func stepperValueDidChange(newValue: Int) {
@@ -25,38 +26,16 @@ struct ProductCellViewModel {
     }
 }
 
-extension ProductCellViewModel {
-    struct Actions {
-        var add: (_ product: Product) -> Void
-        var remove: (_ product: Product) -> Void
-        var quantityOf: (_ product: Product) -> Int
-    }
-}
-
-extension ProductCellViewModel.Actions {
-    init(cart: CartStoring = Cart.shared) {
-        add = { product in
-            cart.add(product)
-        }
-        remove = { product in
-            cart.remove(product)
-        }
-        quantityOf = { product in
-            cart.productCount(matching: product)
-        }
-    }
-}
-
 private extension ProductCellViewModel {
     func add() {
-        actions.add(product)
+        cart.add(product)
     }
     
     func remove() {
-        actions.remove(product)
+        cart.remove(product)
     }
     
     func quantity(product: Product) -> Int {
-        return actions.quantityOf(product)
+        cart.productCount(matching: product)
     }
 }

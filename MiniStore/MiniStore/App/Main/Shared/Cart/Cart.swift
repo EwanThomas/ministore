@@ -1,91 +1,88 @@
 import Combine
 import Foundation
 
-protocol CartStoring {
-    var productPublisher: PassthroughSubject<[Product], Never> { get }
+protocol ProductInvoiceable {
     var invoicePublisher: PassthroughSubject<Invoice, Never> { get }
-    
+    var invoive: Invoice { get }
+}
+
+protocol ProductStorable {
     func add(_ product: Product)
     func remove(_ product: Product)
     func productCount(matching product: Product) -> Int
 }
 
-final class Cart: CartStoring {
-    var productPublisher = PassthroughSubject<[Product], Never>()
-    var invoicePublisher = PassthroughSubject<Invoice, Never>()
+final class Cart: ProductStorable, ProductInvoiceable {
+    private var backingStore: [Int: ProductOrder]
     
     static let shared = Cart()
     
-    private var checkout: Cart.Checkout
-    
-    init(checkout: Checkout = Checkout()) {
-        self.checkout = checkout
+    init(orders: [Int: ProductOrder] = [:]) {
+        self.backingStore = orders
     }
     
+    //MARK: Invoiceable
+    
+    private(set) var invoicePublisher = PassthroughSubject<Invoice, Never>()
+    
+    var invoive: Invoice {
+        Invoice(products: products, itemCount: items, total: total)
+    }
+    
+    //MARK: ProductStorable
+    
     func add(_ product: Product) {
-        checkout.add(product)
-        productPublisher.send(products)
-        let invoice = Invoice(itemCount: checkout.items, total: checkout.total)
-        invoicePublisher.send(invoice)
+        upsert(product)
+        invoicePublisher.send(Invoice(products: products, itemCount: items, total: total))
     }
     
     func remove(_ product: Product) {
-        checkout.delete(product)
-        productPublisher.send(products)
-        let invoice = Invoice(itemCount: checkout.items, total: checkout.total)
-        invoicePublisher.send(invoice)
+        delete(product)
+        invoicePublisher.send(Invoice(products: products, itemCount: items, total: total))
     }
     
     var products: [Product] {
-        checkout.orders.map { $0.product }
+        orders.map { $0.product }.sorted(by: {$0.id < $1.id} )
     }
     
     func productCount(matching product: Product) -> Int {
-        checkout.orderCount(for: product)
+        orderCount(for: product)
     }
 }
 
-extension Cart {
-    final class Checkout {
-        private var backingStore: [Int: ProductOrder]
-        
-        init(orders: [Int: ProductOrder] = [:]) {
-            self.backingStore = orders
+private extension Cart {
+    var orders: [ProductOrder] {
+        return backingStore.values.map { $0 }
+    }
+    
+    var total: Double {
+        orders.reduce(0) { $0 + $1.total }
+    }
+    
+    var items: Int {
+        orders.reduce(0) { $0 + $1.quantity }
+    }
+    
+    func orderCount(for product: Product) -> Int {
+        backingStore[product.id]?.quantity ?? 0
+    }
+    
+    func upsert(_ product: Product) {
+        if let existingOrder = backingStore[product.id] {
+            existingOrder.quantity += 1
+        } else {
+            let newOrder = ProductOrder(product: product)
+            backingStore[product.id] = newOrder
         }
-        
-        var orders: [ProductOrder] {
-            return backingStore.values.map { $0 }
-        }
-        
-        var total: Double {
-            orders.reduce(0) { $0 + $1.total }
-        }
-        
-        var items: Int {
-            orders.reduce(0) { $0 + $1.quantity }
-        }
-        
-        func orderCount(for product: Product) -> Int {
-            backingStore[product.id]?.quantity ?? 0
-        }
-        
-        func add(_ product: Product) {
-            if let existingOrder = backingStore[product.id] {
-                existingOrder.quantity += 1
-            } else {
-                let newOrder = ProductOrder(product: product)
-                backingStore[product.id] = newOrder
-            }
-        }
-        
-        func delete(_ product: Product) {
-            if let existingOrder = backingStore[product.id] {
-                switch existingOrder.quantity {
-                case 1:
-                    backingStore[product.id] = nil
-                default:
-                    existingOrder.quantity -= 1
-                }
+    }
+    
+    func delete(_ product: Product) {
+        if let existingOrder = backingStore[product.id] {
+            switch existingOrder.quantity {
+            case 1:
+                backingStore[product.id] = nil
+            default:
+                existingOrder.quantity -= 1
             }
         }
     }
