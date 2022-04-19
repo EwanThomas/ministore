@@ -1,8 +1,9 @@
 import Combine
 import Foundation
 
-protocol Invoiceable {
+protocol ProductInvoiceable {
     var invoicePublisher: PassthroughSubject<Invoice, Never> { get }
+    var invoive: Invoice { get }
 }
 
 protocol ProductStorable {
@@ -11,14 +12,21 @@ protocol ProductStorable {
     func productCount(matching product: Product) -> Int
 }
 
-final class Cart: ProductStorable, Invoiceable {
-    private(set) var invoicePublisher = PassthroughSubject<Invoice, Never>()
+final class Cart: ProductStorable, ProductInvoiceable {
     private var backingStore: [Int: ProductOrder]
     
     static let shared = Cart()
     
     init(orders: [Int: ProductOrder] = [:]) {
         self.backingStore = orders
+    }
+    
+    //MARK: Invoiceable
+    
+    private(set) var invoicePublisher = PassthroughSubject<Invoice, Never>()
+    
+    var invoive: Invoice {
+        Invoice(products: products, itemCount: items, total: total)
     }
     
     //MARK: ProductStorable
@@ -34,7 +42,7 @@ final class Cart: ProductStorable, Invoiceable {
     }
     
     var products: [Product] {
-        orders.map { $0.product }
+        orders.map { $0.product }.sorted(by: {$0.id < $1.id} )
     }
     
     func productCount(matching product: Product) -> Int {

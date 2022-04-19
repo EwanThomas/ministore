@@ -10,7 +10,7 @@ class ProductCellViewModelTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         mockCart = MockCart()
-        stubProduct = .makeStub
+        stubProduct = .stub()
         subject = ProductCellViewModel(product: stubProduct, cart: mockCart)
     }
     
@@ -35,15 +35,15 @@ class ProductCellViewModelTests: XCTestCase {
     }
     
     func test_title() throws {
-        XCTAssertEqual(subject.title, "Rain Jacket")
+        XCTAssertEqual(subject.title, stubProduct.title)
     }
     
     func test_priceText_isEURCurrencyFormatted() throws {
-        XCTAssertEqual(subject.priceText, "€99.99")
+        XCTAssertEqual(subject.priceText, "€100.00")
     }
     
     func test_descriptionText() throws {
-        XCTAssertEqual(subject.descriptionText, "Casual wear")
+        XCTAssertEqual(subject.descriptionText,stubProduct.productDescription)
     }
     
     func test_limit() throws {
@@ -53,16 +53,5 @@ class ProductCellViewModelTests: XCTestCase {
     func test_cartCount() throws {
         mockCart.productCountMatchingStub = 100
         XCTAssertEqual(subject.cartCount, 100)
-    }
-}
-
-private extension Product {
-    static var makeStub: Product {
-        Product(
-            id: 1,
-            title: "Rain Jacket",
-            price: 99.99,
-            productDescription: "Casual wear",
-            image: "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg")
     }
 }

@@ -40,6 +40,7 @@
 		DEBA54C2280DD822004CE225 /* MockCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBA54C1280DD822004CE225 /* MockCart.swift */; };
 		DEBA54C5280DDD4E004CE225 /* Double+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBA54C4280DDD4E004CE225 /* Double+Formatting.swift */; };
 		DEBA54CA280E9CEE004CE225 /* CartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBA54C9280E9CEE004CE225 /* CartTests.swift */; };
+		DEBA54CC280EBF43004CE225 /* Invoice+Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBA54CB280EBF43004CE225 /* Invoice+Stub.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		DEBA54C1280DD822004CE225 /* MockCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCart.swift; sourceTree = "<group>"; };
 		DEBA54C4280DDD4E004CE225 /* Double+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Formatting.swift"; sourceTree = "<group>"; };
 		DEBA54C9280E9CEE004CE225 /* CartTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTests.swift; sourceTree = "<group>"; };
+		DEBA54CB280EBF43004CE225 /* Invoice+Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Invoice+Stub.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,6 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				DEBA54BF280DD804004CE225 /* Product+Stub.swift */,
+				DEBA54CB280EBF43004CE225 /* Invoice+Stub.swift */,
 			);
 			path = Stub;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				DEBA54C0280DD804004CE225 /* Product+Stub.swift in Sources */,
 				DEBA54C2280DD822004CE225 /* MockCart.swift in Sources */,
 				DEBA54CA280E9CEE004CE225 /* CartTests.swift in Sources */,
+				DEBA54CC280EBF43004CE225 /* Invoice+Stub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

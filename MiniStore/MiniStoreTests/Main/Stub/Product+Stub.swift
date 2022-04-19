@@ -4,10 +4,10 @@ import Foundation
 extension Product {
     static func stub(
         id: Int = 1,
-        title: String = "",
-        price: Double = 100,
-        productDescription: String = "",
-        image: String = ""
+        title: String = "Rain Jacket",
+        price: Double = 100.00,
+        productDescription: String = "Casual wear",
+        image: String = "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg"
     ) -> Product {
         return Product(
             id: id,
