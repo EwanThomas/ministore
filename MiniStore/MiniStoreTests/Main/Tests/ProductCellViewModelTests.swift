@@ -21,14 +21,14 @@ class ProductCellViewModelTests: XCTestCase {
     }
     
     func test_stepperValueDidChange_whenNewValue_greaterThan_cartCount_addsProductToCart() throws {
-        mockCart.productCountMatchingStub = 2
+        mockCart.quantityForProductStub = 2
         subject.stepperValueDidChange(newValue: 3)
         XCTAssertEqual(mockCart.addCallCount, 1)
         XCTAssertEqual(mockCart.addSpy, stubProduct)
     }
 
     func test_stepperValueDidChange_whenNewValue_lessThan_cartCount_removesProductFromCart() throws {
-        mockCart.productCountMatchingStub = 3
+        mockCart.quantityForProductStub = 3
         subject.stepperValueDidChange(newValue: 2)
         XCTAssertEqual(mockCart.removeCallCount, 1)
         XCTAssertEqual(mockCart.removeSpy, stubProduct)
@@ -51,7 +51,7 @@ class ProductCellViewModelTests: XCTestCase {
     }
     
     func test_cartCount() throws {
-        mockCart.productCountMatchingStub = 100
-        XCTAssertEqual(subject.cartCount, 100)
+        mockCart.quantityForProductStub = 100
+        XCTAssertEqual(subject.cartQuantity, 100)
     }
 }

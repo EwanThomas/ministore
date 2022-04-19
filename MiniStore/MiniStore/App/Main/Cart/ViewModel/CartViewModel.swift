@@ -6,11 +6,11 @@ final class CartViewModel {
     @Published private(set) var numberOfItems: String = ""
     @Published private(set) var invoiceTotal: String = ""
     
-    private let cart: ProductInvoiceable
+    private let cart: CartInvoiceable
     private var subscriptions: Set<AnyCancellable> = []
 
     init(
-        cart: ProductInvoiceable = Cart.shared
+        cart: CartInvoiceable = Cart.shared
     ) {
         self.cart = cart
         bind(to: cart)
@@ -18,7 +18,7 @@ final class CartViewModel {
 }
 
 private extension CartViewModel {
-    func bind(to cart: ProductInvoiceable) {
+    func bind(to cart: CartInvoiceable) {
         cart.invoicePublisher.sink { [weak self] invoice in
             self?.products = invoice.products
             self?.numberOfItems = "item count: \(invoice.itemCount)"

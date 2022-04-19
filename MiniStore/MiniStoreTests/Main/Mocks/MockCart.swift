@@ -16,12 +16,12 @@ final class MockCart: ProductStorable {
         removeSpy = product
     }
     
-    var productCountMatchingCallCount: Int = 0
-    var productCountMatchingSpy: Product? = nil
-    var productCountMatchingStub: Int = 0
-    func productCount(matching product: Product) -> Int {
-        productCountMatchingCallCount += 1
-        productCountMatchingSpy = product
-        return productCountMatchingStub
+    var quantityForProductCallCount: Int = 0
+    var quantityForProductSpy: Product? = nil
+    var quantityForProductStub: Int = 0
+    func quantity(for product: Product) -> Int  {
+        quantityForProductCallCount += 1
+        quantityForProductSpy = product
+        return quantityForProductStub
     }
 }

@@ -1,32 +1,42 @@
 import Foundation
+import Combine
 
-struct ProductCellViewModel {
+final class ProductCellViewModel {
     var title: String { product.title }
     var priceText: String { product.price.formatted }
     var descriptionText: String { product.productDescription }
+    var imageUrl: URL? { URL(string: product.image) }
     var limit: Int { 5 }
-    
-    var cartCount: Int {
-        quantity(product: product)
-    }
 
+    @Published private(set) var cartQuantity: Int = 0
+    
     private let product: Product
-    private let cart: ProductStorable
+    private let cart: ProductStorable & ProductQuantitying
+    private var subscriptions: Set<AnyCancellable> = []
     
     init(
         product: Product,
-        cart: ProductStorable = Cart.shared
+        cart: ProductStorable & ProductQuantitying = Cart.shared
     ) {
         self.product = product
         self.cart = cart
+        self.cartQuantity = cartQuantity(of: product)
+        bind(to: cart)
     }
     
     func stepperValueDidChange(newValue: Int) {
-        newValue > cartCount ? add() : remove()
+        newValue > cartQuantity(of: product) ? add() : remove()
     }
 }
 
 private extension ProductCellViewModel {
+    func bind(to cart: ProductQuantitying) {
+        cart.quantityPublisher.sink { [weak self] value in
+            guard self?.product == value.product else { return }
+            self?.cartQuantity = value.quantity
+        }.store(in: &subscriptions)
+    }
+    
     func add() {
         cart.add(product)
     }
@@ -35,7 +45,7 @@ private extension ProductCellViewModel {
         cart.remove(product)
     }
     
-    func quantity(product: Product) -> Int {
-        cart.productCount(matching: product)
+    func cartQuantity(of: Product) -> Int {
+        cart.quantity(for: product)
     }
 }

@@ -10,60 +10,68 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProductViewCell" customModule="MiniStore"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Qxa-gX-Pyh" customClass="ProductViewCell" customModule="MiniStore">
-            <rect key="frame" x="0.0" y="0.0" width="148" height="230"/>
+            <rect key="frame" x="0.0" y="0.0" width="164" height="404"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="G3v-sc-Azl">
-                <rect key="frame" x="0.0" y="0.0" width="148" height="230"/>
+                <rect key="frame" x="0.0" y="0.0" width="164" height="404"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPf-vI-Bsp">
-                        <rect key="frame" x="16" y="193" width="116" height="21"/>
+                        <rect key="frame" x="16" y="367" width="132" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rQN-pN-GZk">
-                        <rect key="frame" x="16" y="16" width="116" height="124"/>
+                        <rect key="frame" x="16" y="56" width="132" height="221"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5h7-Yy-Rkm">
-                        <rect key="frame" x="16" y="156" width="116" height="21"/>
+                        <rect key="frame" x="16" y="330" width="132" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="hZv-KU-Q2n">
-                        <rect key="frame" x="38" y="16" width="94" height="32"/>
+                        <rect key="frame" x="54" y="16" width="94" height="32"/>
                         <connections>
                             <action selector="didTapProduct:" destination="-1" eventType="valueChanged" id="iys-Ok-Gsx"/>
                         </connections>
                     </stepper>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3C-g8-2px">
+                        <rect key="frame" x="16" y="293" width="132" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="5h7-Yy-Rkm" firstAttribute="top" secondItem="rQN-pN-GZk" secondAttribute="bottom" constant="16" id="6Bz-GR-S0u"/>
+                    <constraint firstItem="I3C-g8-2px" firstAttribute="top" secondItem="rQN-pN-GZk" secondAttribute="bottom" constant="16" id="5Kt-Rm-bLW"/>
                     <constraint firstAttribute="trailing" secondItem="rQN-pN-GZk" secondAttribute="trailing" constant="16" id="6Oe-WE-bj1"/>
-                    <constraint firstItem="5h7-Yy-Rkm" firstAttribute="top" secondItem="rQN-pN-GZk" secondAttribute="bottom" constant="16" id="A7z-Da-3fe"/>
+                    <constraint firstItem="rQN-pN-GZk" firstAttribute="top" secondItem="hZv-KU-Q2n" secondAttribute="bottom" constant="8" id="6X0-s7-Adi"/>
                     <constraint firstAttribute="trailing" secondItem="hZv-KU-Q2n" secondAttribute="trailing" constant="16" id="F0Z-DE-Xm1"/>
                     <constraint firstAttribute="trailing" secondItem="zPf-vI-Bsp" secondAttribute="trailing" constant="16" id="HWY-eW-pxg"/>
                     <constraint firstAttribute="trailing" secondItem="5h7-Yy-Rkm" secondAttribute="trailing" constant="16" id="TFs-5b-gBw"/>
                     <constraint firstItem="zPf-vI-Bsp" firstAttribute="top" secondItem="5h7-Yy-Rkm" secondAttribute="bottom" constant="16" id="WjQ-zc-YX9"/>
-                    <constraint firstItem="rQN-pN-GZk" firstAttribute="top" secondItem="G3v-sc-Azl" secondAttribute="top" constant="16" id="YsX-Py-6vM"/>
+                    <constraint firstItem="5h7-Yy-Rkm" firstAttribute="top" secondItem="I3C-g8-2px" secondAttribute="bottom" constant="16" id="aUu-Gg-XhI"/>
+                    <constraint firstAttribute="trailing" secondItem="I3C-g8-2px" secondAttribute="trailing" constant="16" id="aep-dg-TVu"/>
                     <constraint firstItem="rQN-pN-GZk" firstAttribute="leading" secondItem="G3v-sc-Azl" secondAttribute="leading" constant="16" id="por-xd-Gdq"/>
                     <constraint firstItem="hZv-KU-Q2n" firstAttribute="top" secondItem="G3v-sc-Azl" secondAttribute="top" constant="16" id="qt1-Jh-xEL"/>
                     <constraint firstAttribute="bottom" secondItem="zPf-vI-Bsp" secondAttribute="bottom" constant="16" id="rs0-Wf-Heq"/>
-                    <constraint firstItem="zPf-vI-Bsp" firstAttribute="top" secondItem="5h7-Yy-Rkm" secondAttribute="bottom" constant="16" id="spD-uI-crh"/>
+                    <constraint firstItem="I3C-g8-2px" firstAttribute="leading" secondItem="G3v-sc-Azl" secondAttribute="leading" constant="16" id="xcU-TV-Ypt"/>
                     <constraint firstItem="5h7-Yy-Rkm" firstAttribute="leading" secondItem="G3v-sc-Azl" secondAttribute="leading" constant="16" id="yAs-Gs-iQg"/>
                     <constraint firstItem="zPf-vI-Bsp" firstAttribute="leading" secondItem="G3v-sc-Azl" secondAttribute="leading" constant="16" id="zx6-aq-1I7"/>
                 </constraints>
             </collectionViewCellContentView>
-            <size key="customSize" width="148" height="230"/>
+            <size key="customSize" width="164" height="404"/>
             <connections>
                 <outlet property="backgroundView" destination="G3v-sc-Azl" id="0wf-7k-3WQ"/>
                 <outlet property="descriptionLabel" destination="zPf-vI-Bsp" id="5lb-xr-bve"/>
                 <outlet property="imageView" destination="rQN-pN-GZk" id="8FP-oI-qho"/>
                 <outlet property="priceLabel" destination="5h7-Yy-Rkm" id="Tqd-wR-Y71"/>
                 <outlet property="productStepper" destination="hZv-KU-Q2n" id="0nv-6h-XRV"/>
+                <outlet property="titleLabel" destination="I3C-g8-2px" id="UEb-HF-PBf"/>
             </connections>
-            <point key="canvasLocation" x="-695.6521739130435" y="-115.17857142857142"/>
+            <point key="canvasLocation" x="-755.07246376811599" y="-140.625"/>
         </collectionViewCell>
     </objects>
 </document>

@@ -16,10 +16,19 @@ final class MainViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         viewControllers = tabBarDataSource.controllers
+    }
+}
+
+private extension MainViewController {
+    func setup() {
+        tabBar.tintColor = .white
+        tabBar.barStyle = .black
+        tabBar.isTranslucent = false;
     }
 }
