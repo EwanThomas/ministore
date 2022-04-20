@@ -5,7 +5,7 @@ final class MainViewController: UITabBarController {
 
     private let tabBarDataSource: ViewControllerDataSource
     
-    init(tabBarDataSource: ViewControllerDataSource = TabBarDataSource()) {
+    init(tabBarDataSource: ViewControllerDataSource = MainTabBarDataSource()) {
         self.tabBarDataSource = tabBarDataSource
         super.init(nibName: String(describing: MainViewController.self), bundle: .main)
     }

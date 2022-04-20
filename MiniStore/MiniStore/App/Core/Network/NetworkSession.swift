@@ -35,7 +35,6 @@ struct NetworkSession: Networking {
                 throw NetworkError.badStatusCode
             }
         } catch let error {
-            print("Network Error")
             throw error
         }
     }

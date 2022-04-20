@@ -24,11 +24,22 @@ final class ProductsViewController: UIViewController {
         super.viewDidLoad()
         setupCollectionView()
         bind(to: viewModel)
+        
         viewModel.reload()
     }
 }
 
 private extension ProductsViewController {
+    func setupActivityIndicator() {
+        activityIndicator.hidesWhenStopped = true
+    }
+    
+    func setupCollectionView() {
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(ProductsViewController.cellNib, forCellWithReuseIdentifier: ProductViewCell.identifier)
+    }
+    
     func bind(to: ProductsViewModel) {
         viewModel.$loading
             .receive(on: DispatchQueue.main)
@@ -43,16 +54,6 @@ private extension ProductsViewController {
                 self?.collectionView.isHidden = false
                 self?.collectionView.reloadData()
             }.store(in: &subscriptions)
-    }
-
-    func setupActivityIndicator() {
-        activityIndicator.hidesWhenStopped = true
-    }
-    
-    func setupCollectionView() {
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(ProductsViewController.cellNib, forCellWithReuseIdentifier: ProductViewCell.identifier)
     }
     
     func viewModel(at indexPath: IndexPath) -> ProductCellViewModel {

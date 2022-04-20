@@ -10,9 +10,9 @@
 		DE283787280829710052F565 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE283786280829710052F565 /* MainViewController.swift */; };
 		DE28378C280829EF0052F565 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE28378B280829EF0052F565 /* ProductsViewController.swift */; };
 		DE28378E280829FE0052F565 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE28378D280829FE0052F565 /* CartViewController.swift */; };
-		DE283790280837AF0052F565 /* TabBarDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE28378F280837AF0052F565 /* TabBarDataSource.swift */; };
+		DE283790280837AF0052F565 /* MainTabBarDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE28378F280837AF0052F565 /* MainTabBarDataSource.swift */; };
 		DE2837952808420A0052F565 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE283794280842090052F565 /* MainViewController.xib */; };
-		DE283797280847AA0052F565 /* ViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE283796280847AA0052F565 /* ViewControllerDataSource.swift */; };
+		DE283797280847AA0052F565 /* MainViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE283796280847AA0052F565 /* MainViewControllerDataSource.swift */; };
 		DE28379B28085DDD0052F565 /* ProductsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE28379A28085DDD0052F565 /* ProductsViewController.xib */; };
 		DE2837A228087D1C0052F565 /* ProductService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2837A128087D1C0052F565 /* ProductService.swift */; };
 		DE2837A92808B4620052F565 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2837A62808B4620052F565 /* NetworkSession.swift */; };
@@ -67,9 +67,9 @@
 		DE283786280829710052F565 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DE28378B280829EF0052F565 /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
 		DE28378D280829FE0052F565 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
-		DE28378F280837AF0052F565 /* TabBarDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarDataSource.swift; sourceTree = "<group>"; };
+		DE28378F280837AF0052F565 /* MainTabBarDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarDataSource.swift; sourceTree = "<group>"; };
 		DE283794280842090052F565 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		DE283796280847AA0052F565 /* ViewControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerDataSource.swift; sourceTree = "<group>"; };
+		DE283796280847AA0052F565 /* MainViewControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerDataSource.swift; sourceTree = "<group>"; };
 		DE28379A28085DDD0052F565 /* ProductsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductsViewController.xib; sourceTree = "<group>"; };
 		DE2837A128087D1C0052F565 /* ProductService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductService.swift; sourceTree = "<group>"; };
 		DE2837A62808B4620052F565 /* NetworkSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
@@ -206,8 +206,8 @@
 		DE28379128083CD40052F565 /* TabBarDataSource */ = {
 			isa = PBXGroup;
 			children = (
-				DE28378F280837AF0052F565 /* TabBarDataSource.swift */,
-				DE283796280847AA0052F565 /* ViewControllerDataSource.swift */,
+				DE28378F280837AF0052F565 /* MainTabBarDataSource.swift */,
+				DE283796280847AA0052F565 /* MainViewControllerDataSource.swift */,
 			);
 			path = TabBarDataSource;
 			sourceTree = "<group>";
@@ -217,7 +217,6 @@
 			children = (
 				DE2837AC2808B5330052F565 /* API */,
 				DE2837B4280991B00052F565 /* Product.swift */,
-				DE32E1F4280C5274008F5BC2 /* ProductOrder.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -310,7 +309,7 @@
 		DE32E204280D5C4C008F5BC2 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
-				DEBA54D2280F3800004CE225 /* State */,
+				DEBA54D2280F3800004CE225 /* Model */,
 				DE2837C2280BF81C0052F565 /* Cart.swift */,
 			);
 			path = Cart;
@@ -409,13 +408,14 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		DEBA54D2280F3800004CE225 /* State */ = {
+		DEBA54D2280F3800004CE225 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DE32E1F4280C5274008F5BC2 /* ProductOrder.swift */,
 				DE32E215280D949E008F5BC2 /* Invoice.swift */,
 				DEBA54D3280F381C004CE225 /* ProductQuantity.swift */,
 			);
-			path = State;
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -564,7 +564,7 @@
 				DE2837AB2808B4620052F565 /* URLSession+URLSessionResourceLoading.swift in Sources */,
 				DEBA54C5280DDD4E004CE225 /* Double+Formatting.swift in Sources */,
 				DE2837B8280998B30052F565 /* ProductsViewModel.swift in Sources */,
-				DE283797280847AA0052F565 /* ViewControllerDataSource.swift in Sources */,
+				DE283797280847AA0052F565 /* MainViewControllerDataSource.swift in Sources */,
 				DE2837BD280AF8360052F565 /* ProductCellViewModel.swift in Sources */,
 				DE32E1F5280C5274008F5BC2 /* ProductOrder.swift in Sources */,
 				DE32E203280C941B008F5BC2 /* CartViewModel.swift in Sources */,
@@ -575,7 +575,7 @@
 				DE28378C280829EF0052F565 /* ProductsViewController.swift in Sources */,
 				DE28378E280829FE0052F565 /* CartViewController.swift in Sources */,
 				DE4EF9D228081A620017B4BB /* SceneDelegate.swift in Sources */,
-				DE283790280837AF0052F565 /* TabBarDataSource.swift in Sources */,
+				DE283790280837AF0052F565 /* MainTabBarDataSource.swift in Sources */,
 				DE2837AE280955D40052F565 /* ProductViewCell.swift in Sources */,
 				DE2837A228087D1C0052F565 /* ProductService.swift in Sources */,
 				DE2837B5280991B00052F565 /* Product.swift in Sources */,
