@@ -51,7 +51,7 @@ Standard MVVM with Combine bindings between views and view models and view model
 
 ## Testing
 
-Not fully tested, most critical logic is.
+Not fully testet butmost critical logic is.
 
 ## Interface
 
