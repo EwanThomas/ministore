@@ -26,7 +26,7 @@ class CartTests: XCTestCase {
         simulateAdding(items: [product, product, product])
         
         let expectedInvoice = CartInvoice(products: [product], itemCount: 3, total: 300)
-        XCTAssertEqual(subject.invoive, expectedInvoice)
+        XCTAssertEqual(subject.invoice, expectedInvoice)
     }
     
     func test_invoice_whenAddingProducts_withDifferentProductId_returnsExpectedInvoice() throws {
@@ -36,7 +36,7 @@ class CartTests: XCTestCase {
         simulateAdding(items: [firstProduct, secondProduct, firstProduct, thirdProduct])
         
         let expectedInvoice = CartInvoice(products: [firstProduct, secondProduct, thirdProduct], itemCount: 4, total: 400)
-        XCTAssertEqual(subject.invoive, expectedInvoice)
+        XCTAssertEqual(subject.invoice, expectedInvoice)
     }
     
     func test_invoice_whenRemovingProducts_returnsExpectedInvoice() throws {
@@ -48,12 +48,12 @@ class CartTests: XCTestCase {
         subject.remove(firstProduct)
         
         let expectedInvoice = CartInvoice(products: [firstProduct, secondProduct, thirdProduct], itemCount: 3, total: 300)
-        XCTAssertEqual(subject.invoive, expectedInvoice)
+        XCTAssertEqual(subject.invoice, expectedInvoice)
     }
     
     func test_invoice_whenCarIsEmpry_returnsExpectedInvoice() throws {
         let expectedInvoice = CartInvoice(products: [], itemCount: 0, total: 0)
-        XCTAssertEqual(subject.invoive, expectedInvoice)
+        XCTAssertEqual(subject.invoice, expectedInvoice)
     }
 
     //MARK: Quantity

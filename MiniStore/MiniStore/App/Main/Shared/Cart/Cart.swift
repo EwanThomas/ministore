@@ -3,7 +3,7 @@ import Foundation
 
 protocol CartInvoicePublishing {
     var invoicePublisher: PassthroughSubject<CartInvoice, Never> { get }
-    var invoive: CartInvoice { get }
+    var invoice: CartInvoice { get }
 }
 
 protocol ProductStorable {
@@ -26,7 +26,7 @@ final class Cart: ProductStorable, CartInvoicePublishing {
     
     private(set) var invoicePublisher = PassthroughSubject<CartInvoice, Never>()
     
-    var invoive: CartInvoice {
+    var invoice: CartInvoice {
         let newCartInvoice = CartInvoice(products: products, itemCount: invoiceItems, total: invoiceTotal)
         return newCartInvoice
     }
@@ -101,7 +101,7 @@ private extension Cart {
     //MARK: Publish new state
     
     func publishInvoiceChanged() {
-        invoicePublisher.send(invoive)
+        invoicePublisher.send(invoice)
     }
     
     func publishQuantityChanged(for product: Product) {
