@@ -1,9 +1,16 @@
 
 # Shortcuts
 
-I would like the images cached but time is **very** tight for me at the moment and so I have used Kingfisher via SPM.
+Time is **very** tight for me at the moment and so there are at least two shortcuts.
+
+#### Image caching 
+Image caching is necessary for a decent UX in my opinion and so I am using Kingfisher via SMP.
 
 After cloning if the app does not compile please do `File ` -> `Packages` -> `Reset Package Caches`.
+
+#### Error handling
+Errors are not handled the view layer, they are everywhere else though.
+
 
 # Architecture
 
