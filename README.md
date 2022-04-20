@@ -1,3 +1,10 @@
+
+# Shortcut 
+
+I would like the images cached but time is **very** tight for me at the moment and so I have used Kingfisher via SPM.
+
+After cloning if the app does not compile please do `File ` -> `Packages` -> `Reset Package Caches`.
+
 # Architecture
 
 ## MVVM
