@@ -10,9 +10,9 @@
 		DE283787280829710052F565 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE283786280829710052F565 /* MainViewController.swift */; };
 		DE28378C280829EF0052F565 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE28378B280829EF0052F565 /* ProductsViewController.swift */; };
 		DE28378E280829FE0052F565 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE28378D280829FE0052F565 /* CartViewController.swift */; };
-		DE283790280837AF0052F565 /* TabBarDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE28378F280837AF0052F565 /* TabBarDataSource.swift */; };
+		DE283790280837AF0052F565 /* MainTabBarDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE28378F280837AF0052F565 /* MainTabBarDataSource.swift */; };
 		DE2837952808420A0052F565 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE283794280842090052F565 /* MainViewController.xib */; };
-		DE283797280847AA0052F565 /* ViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE283796280847AA0052F565 /* ViewControllerDataSource.swift */; };
+		DE283797280847AA0052F565 /* MainViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE283796280847AA0052F565 /* MainViewControllerDataSource.swift */; };
 		DE28379B28085DDD0052F565 /* ProductsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE28379A28085DDD0052F565 /* ProductsViewController.xib */; };
 		DE2837A228087D1C0052F565 /* ProductService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2837A128087D1C0052F565 /* ProductService.swift */; };
 		DE2837A92808B4620052F565 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2837A62808B4620052F565 /* NetworkSession.swift */; };
@@ -28,7 +28,7 @@
 		DE32E1FD280C6918008F5BC2 /* CartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE32E1FC280C6918008F5BC2 /* CartViewController.xib */; };
 		DE32E200280C6B67008F5BC2 /* CartCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE32E1FF280C6B67008F5BC2 /* CartCollectionViewCell.xib */; };
 		DE32E203280C941B008F5BC2 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE32E202280C941B008F5BC2 /* CartViewModel.swift */; };
-		DE32E216280D949E008F5BC2 /* Checkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE32E215280D949E008F5BC2 /* Checkout.swift */; };
+		DE32E216280D949E008F5BC2 /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE32E215280D949E008F5BC2 /* Invoice.swift */; };
 		DE4EF9D028081A620017B4BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4EF9CF28081A620017B4BB /* AppDelegate.swift */; };
 		DE4EF9D228081A620017B4BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4EF9D128081A620017B4BB /* SceneDelegate.swift */; };
 		DE4EF9D928081A630017B4BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE4EF9D828081A630017B4BB /* Assets.xcassets */; };
@@ -41,6 +41,9 @@
 		DEBA54C5280DDD4E004CE225 /* Double+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBA54C4280DDD4E004CE225 /* Double+Formatting.swift */; };
 		DEBA54CA280E9CEE004CE225 /* CartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBA54C9280E9CEE004CE225 /* CartTests.swift */; };
 		DEBA54CC280EBF43004CE225 /* Invoice+Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBA54CB280EBF43004CE225 /* Invoice+Stub.swift */; };
+		DEBA54D1280EF08E004CE225 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DEBA54D0280EF08E004CE225 /* Kingfisher */; };
+		DEBA54D4280F381C004CE225 /* ProductQuantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBA54D3280F381C004CE225 /* ProductQuantity.swift */; };
+		DEBA54D6280F4D58004CE225 /* ProductQuantity+Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBA54D5280F4D58004CE225 /* ProductQuantity+Stub.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,9 +67,9 @@
 		DE283786280829710052F565 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DE28378B280829EF0052F565 /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
 		DE28378D280829FE0052F565 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
-		DE28378F280837AF0052F565 /* TabBarDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarDataSource.swift; sourceTree = "<group>"; };
+		DE28378F280837AF0052F565 /* MainTabBarDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarDataSource.swift; sourceTree = "<group>"; };
 		DE283794280842090052F565 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		DE283796280847AA0052F565 /* ViewControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerDataSource.swift; sourceTree = "<group>"; };
+		DE283796280847AA0052F565 /* MainViewControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerDataSource.swift; sourceTree = "<group>"; };
 		DE28379A28085DDD0052F565 /* ProductsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductsViewController.xib; sourceTree = "<group>"; };
 		DE2837A128087D1C0052F565 /* ProductService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductService.swift; sourceTree = "<group>"; };
 		DE2837A62808B4620052F565 /* NetworkSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
@@ -82,7 +85,7 @@
 		DE32E1FC280C6918008F5BC2 /* CartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartViewController.xib; sourceTree = "<group>"; };
 		DE32E1FF280C6B67008F5BC2 /* CartCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartCollectionViewCell.xib; sourceTree = "<group>"; };
 		DE32E202280C941B008F5BC2 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
-		DE32E215280D949E008F5BC2 /* Checkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkout.swift; sourceTree = "<group>"; };
+		DE32E215280D949E008F5BC2 /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
 		DE4EF9CC28081A620017B4BB /* MiniStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE4EF9CF28081A620017B4BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE4EF9D128081A620017B4BB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +102,8 @@
 		DEBA54C4280DDD4E004CE225 /* Double+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Formatting.swift"; sourceTree = "<group>"; };
 		DEBA54C9280E9CEE004CE225 /* CartTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTests.swift; sourceTree = "<group>"; };
 		DEBA54CB280EBF43004CE225 /* Invoice+Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Invoice+Stub.swift"; sourceTree = "<group>"; };
+		DEBA54D3280F381C004CE225 /* ProductQuantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductQuantity.swift; sourceTree = "<group>"; };
+		DEBA54D5280F4D58004CE225 /* ProductQuantity+Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductQuantity+Stub.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEBA54D1280EF08E004CE225 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,7 +167,6 @@
 		DE283783280828E30052F565 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
-				DE2837C4280BF8570052F565 /* Model */,
 				DE28378A280829E00052F565 /* View */,
 				DE32E201280C93DD008F5BC2 /* ViewModel */,
 			);
@@ -201,8 +206,8 @@
 		DE28379128083CD40052F565 /* TabBarDataSource */ = {
 			isa = PBXGroup;
 			children = (
-				DE28378F280837AF0052F565 /* TabBarDataSource.swift */,
-				DE283796280847AA0052F565 /* ViewControllerDataSource.swift */,
+				DE28378F280837AF0052F565 /* MainTabBarDataSource.swift */,
+				DE283796280847AA0052F565 /* MainViewControllerDataSource.swift */,
 			);
 			path = TabBarDataSource;
 			sourceTree = "<group>";
@@ -212,7 +217,6 @@
 			children = (
 				DE2837AC2808B5330052F565 /* API */,
 				DE2837B4280991B00052F565 /* Product.swift */,
-				DE32E1F4280C5274008F5BC2 /* ProductOrder.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -286,14 +290,6 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		DE2837C4280BF8570052F565 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				DE32E215280D949E008F5BC2 /* Checkout.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		DE32E1FE280C6B41008F5BC2 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,6 +309,7 @@
 		DE32E204280D5C4C008F5BC2 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				DEBA54D2280F3800004CE225 /* Model */,
 				DE2837C2280BF81C0052F565 /* Cart.swift */,
 			);
 			path = Cart;
@@ -398,6 +395,7 @@
 			children = (
 				DEBA54BF280DD804004CE225 /* Product+Stub.swift */,
 				DEBA54CB280EBF43004CE225 /* Invoice+Stub.swift */,
+				DEBA54D5280F4D58004CE225 /* ProductQuantity+Stub.swift */,
 			);
 			path = Stub;
 			sourceTree = "<group>";
@@ -408,6 +406,16 @@
 				DEBA54C4280DDD4E004CE225 /* Double+Formatting.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		DEBA54D2280F3800004CE225 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DE32E1F4280C5274008F5BC2 /* ProductOrder.swift */,
+				DE32E215280D949E008F5BC2 /* Invoice.swift */,
+				DEBA54D3280F381C004CE225 /* ProductQuantity.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -426,6 +434,9 @@
 			dependencies = (
 			);
 			name = MiniStore;
+			packageProductDependencies = (
+				DEBA54D0280EF08E004CE225 /* Kingfisher */,
+			);
 			productName = MiniStore;
 			productReference = DE4EF9CC28081A620017B4BB /* MiniStore.app */;
 			productType = "com.apple.product-type.application";
@@ -498,6 +509,9 @@
 				Base,
 			);
 			mainGroup = DE4EF9C328081A620017B4BB;
+			packageReferences = (
+				DEBA54CF280EF08D004CE225 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = DE4EF9CD28081A620017B4BB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -546,11 +560,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE283787280829710052F565 /* MainViewController.swift in Sources */,
-				DE32E216280D949E008F5BC2 /* Checkout.swift in Sources */,
+				DE32E216280D949E008F5BC2 /* Invoice.swift in Sources */,
 				DE2837AB2808B4620052F565 /* URLSession+URLSessionResourceLoading.swift in Sources */,
 				DEBA54C5280DDD4E004CE225 /* Double+Formatting.swift in Sources */,
 				DE2837B8280998B30052F565 /* ProductsViewModel.swift in Sources */,
-				DE283797280847AA0052F565 /* ViewControllerDataSource.swift in Sources */,
+				DE283797280847AA0052F565 /* MainViewControllerDataSource.swift in Sources */,
 				DE2837BD280AF8360052F565 /* ProductCellViewModel.swift in Sources */,
 				DE32E1F5280C5274008F5BC2 /* ProductOrder.swift in Sources */,
 				DE32E203280C941B008F5BC2 /* CartViewModel.swift in Sources */,
@@ -561,10 +575,11 @@
 				DE28378C280829EF0052F565 /* ProductsViewController.swift in Sources */,
 				DE28378E280829FE0052F565 /* CartViewController.swift in Sources */,
 				DE4EF9D228081A620017B4BB /* SceneDelegate.swift in Sources */,
-				DE283790280837AF0052F565 /* TabBarDataSource.swift in Sources */,
+				DE283790280837AF0052F565 /* MainTabBarDataSource.swift in Sources */,
 				DE2837AE280955D40052F565 /* ProductViewCell.swift in Sources */,
 				DE2837A228087D1C0052F565 /* ProductService.swift in Sources */,
 				DE2837B5280991B00052F565 /* Product.swift in Sources */,
+				DEBA54D4280F381C004CE225 /* ProductQuantity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,6 +589,7 @@
 			files = (
 				DEBA54BC280DCD71004CE225 /* ProductCellViewModelTests.swift in Sources */,
 				DEBA54C0280DD804004CE225 /* Product+Stub.swift in Sources */,
+				DEBA54D6280F4D58004CE225 /* ProductQuantity+Stub.swift in Sources */,
 				DEBA54C2280DD822004CE225 /* MockCart.swift in Sources */,
 				DEBA54CA280E9CEE004CE225 /* CartTests.swift in Sources */,
 				DEBA54CC280EBF43004CE225 /* Invoice+Stub.swift in Sources */,
@@ -894,6 +910,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DEBA54CF280EF08D004CE225 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DEBA54D0280EF08E004CE225 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DEBA54CF280EF08D004CE225 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DE4EF9C428081A620017B4BB /* Project object */;
 }

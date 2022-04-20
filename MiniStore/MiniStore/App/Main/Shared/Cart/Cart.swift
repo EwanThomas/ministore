@@ -1,7 +1,7 @@
 import Combine
 import Foundation
 
-protocol ProductInvoiceable {
+protocol CartInvoicePublishing {
     var invoicePublisher: PassthroughSubject<Invoice, Never> { get }
     var invoive: Invoice { get }
 }
@@ -9,10 +9,11 @@ protocol ProductInvoiceable {
 protocol ProductStorable {
     func add(_ product: Product)
     func remove(_ product: Product)
-    func productCount(matching product: Product) -> Int
+    func quantity(for product: Product) -> ProductQuantity
+    var quantityPublisher: PassthroughSubject<ProductQuantity, Never> { get }
 }
 
-final class Cart: ProductStorable, ProductInvoiceable {
+final class Cart: ProductStorable, CartInvoicePublishing {
     private var backingStore: [Int: ProductOrder]
     
     static let shared = Cart()
@@ -26,45 +27,52 @@ final class Cart: ProductStorable, ProductInvoiceable {
     private(set) var invoicePublisher = PassthroughSubject<Invoice, Never>()
     
     var invoive: Invoice {
-        Invoice(products: products, itemCount: items, total: total)
+        Invoice(products: products, itemCount: invoiceItems, total: invoiceTotal)
     }
-    
+
     //MARK: ProductStorable
+
+    private(set) var quantityPublisher = PassthroughSubject<ProductQuantity, Never>()
     
     func add(_ product: Product) {
         upsert(product)
-        invoicePublisher.send(Invoice(products: products, itemCount: items, total: total))
+        
+        publishInvoiceChanged()
+        publishQuantityChanged(for: product)
     }
-    
+
     func remove(_ product: Product) {
         delete(product)
-        invoicePublisher.send(Invoice(products: products, itemCount: items, total: total))
+        
+        publishInvoiceChanged()
+        publishQuantityChanged(for: product)
     }
-    
-    var products: [Product] {
-        orders.map { $0.product }.sorted(by: {$0.id < $1.id} )
-    }
-    
-    func productCount(matching product: Product) -> Int {
-        orderCount(for: product)
+
+    func quantity(for product: Product) -> ProductQuantity {
+        ProductQuantity(product: product, quantity: order(for: product)?.quantity ?? 0)
     }
 }
 
 private extension Cart {
+    
+    var products: [Product] {
+        orders.map { $0.product }.sorted(by: {$0.id < $1.id} )
+    }
+  
     var orders: [ProductOrder] {
         return backingStore.values.map { $0 }
     }
     
-    var total: Double {
+    func order(for product: Product) -> ProductOrder? {
+        backingStore[product.id]
+    }
+    
+    var invoiceTotal: Double {
         orders.reduce(0) { $0 + $1.total }
     }
     
-    var items: Int {
+    var invoiceItems: Int {
         orders.reduce(0) { $0 + $1.quantity }
-    }
-    
-    func orderCount(for product: Product) -> Int {
-        backingStore[product.id]?.quantity ?? 0
     }
     
     func upsert(_ product: Product) {
@@ -85,5 +93,15 @@ private extension Cart {
                 existingOrder.quantity -= 1
             }
         }
+    }
+    
+    //MARK: Publish new state
+    
+    func publishInvoiceChanged() {
+        invoicePublisher.send(invoive)
+    }
+    
+    func publishQuantityChanged(for product: Product) {
+        quantityPublisher.send(quantity(for: product))
     }
 }

@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
  
-struct TabBarDataSource: ViewControllerDataSource {
+struct MainTabBarDataSource: ViewControllerDataSource {
     enum ViewControllerType {
         case product
         case cart
@@ -18,7 +18,7 @@ struct TabBarDataSource: ViewControllerDataSource {
     }
 }
 
-private extension TabBarDataSource {
+private extension MainTabBarDataSource {
     func make(type: ViewControllerType) -> UIViewController {
         switch type {
         case .product:
@@ -30,13 +30,19 @@ private extension TabBarDataSource {
     
     var productViewController: UIViewController {
         let controller = ProductsViewController()
-        controller.tabBarItem = UITabBarItem(title: "Products", image: UIImage(named: "someImage.png"), selectedImage: UIImage(named: "otherImage.png"))
+        let config = UIImage.SymbolConfiguration(scale: .large)
+        let icon = UIImage(systemName: "bag", withConfiguration: config)
+        let selectedIcon = UIImage(systemName: "bag.fill", withConfiguration: config)
+        controller.tabBarItem = UITabBarItem(title: "Products", image: icon, selectedImage: selectedIcon)
         return controller
     }
     
     var cartViewController: UIViewController {
         let controller = CartViewController()
-        controller.tabBarItem = UITabBarItem(title: "Store Cart", image: UIImage(named: "someImage.png"), selectedImage: UIImage(named: "otherImage.png"))
+        let config = UIImage.SymbolConfiguration(scale: .large)
+        let icon = UIImage(systemName: "cart", withConfiguration: config)
+        let selectedIcon = UIImage(systemName: "cart.fill", withConfiguration: config)
+        controller.tabBarItem = UITabBarItem(title: "Store Cart", image: icon, selectedImage: selectedIcon)
         return controller
     }
 }

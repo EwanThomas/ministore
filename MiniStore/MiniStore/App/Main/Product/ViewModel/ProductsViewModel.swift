@@ -3,6 +3,7 @@ import Foundation
 final class ProductsViewModel {
     private let actions: Actions
     
+    @Published private(set) var loading: Bool = true
     @Published private(set) var products: Products = []
     
     init(
@@ -14,8 +15,11 @@ final class ProductsViewModel {
     func reload() {
         Task {
             do {
+                loading = true
                 products = try await actions.reload()
+                loading = false
             } catch {
+                loading = false
                 throw error
             }
         }

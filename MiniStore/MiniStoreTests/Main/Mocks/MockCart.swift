@@ -1,7 +1,10 @@
 import Foundation
+import Combine
 @testable import MiniStore
 
 final class MockCart: ProductStorable {
+    var quantityPublisher = PassthroughSubject<ProductQuantity, Never>()
+    
     var addCallCount: Int = 0
     var addSpy: Product? = nil
     func add(_ product: Product) {
@@ -16,12 +19,12 @@ final class MockCart: ProductStorable {
         removeSpy = product
     }
     
-    var productCountMatchingCallCount: Int = 0
-    var productCountMatchingSpy: Product? = nil
-    var productCountMatchingStub: Int = 0
-    func productCount(matching product: Product) -> Int {
-        productCountMatchingCallCount += 1
-        productCountMatchingSpy = product
-        return productCountMatchingStub
+    var quantityForProductCallCount: Int = 0
+    var quantityForProductSpy: Product? = nil
+    var quantityForProductStub: ProductQuantity = .stub()
+    func quantity(for product: Product) -> ProductQuantity {
+        quantityForProductCallCount += 1
+        quantityForProductSpy = product
+        return quantityForProductStub
     }
 }

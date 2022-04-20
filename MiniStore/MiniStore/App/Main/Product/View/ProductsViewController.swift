@@ -4,6 +4,7 @@ import UIKit
 
 final class ProductsViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private let viewModel: ProductsViewModel
     private var subscriptions = Set<AnyCancellable>()
@@ -23,27 +24,36 @@ final class ProductsViewController: UIViewController {
         super.viewDidLoad()
         setupCollectionView()
         bind(to: viewModel)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        
         viewModel.reload()
     }
 }
 
 private extension ProductsViewController {
-    func bind(to: ProductsViewModel) {
-        viewModel.$products
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
-                self?.collectionView.reloadData()
-            }.store(in: &subscriptions)
+    func setupActivityIndicator() {
+        activityIndicator.hidesWhenStopped = true
     }
     
     func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(ProductsViewController.cellNib, forCellWithReuseIdentifier: ProductViewCell.identifier)
+    }
+    
+    func bind(to: ProductsViewModel) {
+        viewModel.$loading
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] loading in
+                loading ? self?.activityIndicator.startAnimating() : self?.activityIndicator.stopAnimating()
+                self?.collectionView.isHidden = loading
+            }.store(in: &subscriptions)
+        
+        viewModel.$products
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.collectionView.isHidden = false
+                self?.collectionView.reloadData()
+            }.store(in: &subscriptions)
     }
     
     func viewModel(at indexPath: IndexPath) -> ProductCellViewModel {
