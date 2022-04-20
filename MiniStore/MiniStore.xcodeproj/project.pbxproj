@@ -44,6 +44,7 @@
 		DEBA54D1280EF08E004CE225 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DEBA54D0280EF08E004CE225 /* Kingfisher */; };
 		DEBA54D4280F381C004CE225 /* ProductQuantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBA54D3280F381C004CE225 /* ProductQuantity.swift */; };
 		DEBA54D6280F4D58004CE225 /* ProductQuantity+Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBA54D5280F4D58004CE225 /* ProductQuantity+Stub.swift */; };
+		DEBA54D9280FDCC2004CE225 /* ProductsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBA54D8280FDCC2004CE225 /* ProductsViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		DEBA54CB280EBF43004CE225 /* Invoice+Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Invoice+Stub.swift"; sourceTree = "<group>"; };
 		DEBA54D3280F381C004CE225 /* ProductQuantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductQuantity.swift; sourceTree = "<group>"; };
 		DEBA54D5280F4D58004CE225 /* ProductQuantity+Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductQuantity+Stub.swift"; sourceTree = "<group>"; };
+		DEBA54D8280FDCC2004CE225 /* ProductsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -371,6 +373,7 @@
 			children = (
 				DEBA54BB280DCD71004CE225 /* ProductCellViewModelTests.swift */,
 				DEBA54C9280E9CEE004CE225 /* CartTests.swift */,
+				DEBA54D8280FDCC2004CE225 /* ProductsViewModelTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 				DEBA54BC280DCD71004CE225 /* ProductCellViewModelTests.swift in Sources */,
 				DEBA54C0280DD804004CE225 /* Product+Stub.swift in Sources */,
 				DEBA54D6280F4D58004CE225 /* ProductQuantity+Stub.swift in Sources */,
+				DEBA54D9280FDCC2004CE225 /* ProductsViewModelTests.swift in Sources */,
 				DEBA54C2280DD822004CE225 /* MockCart.swift in Sources */,
 				DEBA54CA280E9CEE004CE225 /* CartTests.swift in Sources */,
 				DEBA54CC280EBF43004CE225 /* Invoice+Stub.swift in Sources */,
