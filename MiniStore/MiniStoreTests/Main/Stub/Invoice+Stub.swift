@@ -1,13 +1,13 @@
 import Foundation
 @testable import MiniStore
 
-extension Invoice {
+extension CartInvoice {
     static func stub(
         products: [Product],
         itemCount: Int,
         total: Double
-    ) -> Invoice {
-        return Invoice(
+    ) -> CartInvoice {
+        return CartInvoice(
             products: products,
             itemCount: itemCount,
             total: total
