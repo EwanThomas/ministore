@@ -72,3 +72,12 @@ Not fully testet but most critical logic is.
 UIKit but views can be easily switched out for SwiftUI without changing view models or models.
 
 
+## Pull requests and commits
+
+I have squashed commits to `Main` but you can see stale branches and commits here:
+
+https://github.com/EwanThomas/ministore/pulls?q=is%3Apr+is%3Amerged
+
+https://github.com/EwanThomas/ministore/branches
+
+
