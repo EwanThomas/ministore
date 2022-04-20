@@ -1,5 +1,5 @@
 
-# Shortcut 
+# Shortcuts
 
 I would like the images cached but time is **very** tight for me at the moment and so I have used Kingfisher via SPM.
 
