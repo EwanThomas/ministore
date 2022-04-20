@@ -23,7 +23,7 @@ Standard MVVM with Combine bindings between views and view models and view model
 
 -	**Model**
 	  - **Product**
-	    -  represents Product.
+	    -  represents a Product.
 	  - **ProductService**
 	    - requests Products from API.
 
@@ -31,7 +31,7 @@ Standard MVVM with Combine bindings between views and view models and view model
 
 -	**View**
 	  - **CartViewController**
-	    - displays all CartInvoice in the Cart using ProductViewCell.
+	    - displays CartInvoice in the Cart using ProductViewCell.
 
 -	**View Model**
 	  - **CartViewModel**
@@ -46,7 +46,7 @@ Standard MVVM with Combine bindings between views and view models and view model
 - **Cart**	
 	- Stores products 
 	- provides quantities for all or individual products 
-	- provides total cost of stored products 
+	- provides total cost of all stored products 
 
 
 ## Testing
@@ -55,6 +55,6 @@ Not fully testet but most critical logic is.
 
 ## Interface
 
-UIKit, views can be easily switched out for SwiftUI.
+UIKit but views can be easily switched out for SwiftUI without changing view models or models.
 
 
