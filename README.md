@@ -4,7 +4,7 @@
 Time is **very** tight for me at the moment and so there are at least two shortcuts.
 
 #### Image caching 
-Image caching is necessary for a decent UX in my opinion and so I am using Kingfisher via SMP.
+Image caching is necessary for a decent UX in my opinion and so I am using Kingfisher via SPM.
 
 After cloning if the app does not compile please do `File ` -> `Packages` -> `Reset Package Caches`.
 
