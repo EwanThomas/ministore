@@ -25,7 +25,7 @@ class CartTests: XCTestCase {
         let product = Product.stub()
         simulateAdding(items: [product, product, product])
         
-        let expectedInvoice = Invoice(products: [product], itemCount: 3, total: 300)
+        let expectedInvoice = CartInvoice(products: [product], itemCount: 3, total: 300)
         XCTAssertEqual(subject.invoive, expectedInvoice)
     }
     
@@ -35,7 +35,7 @@ class CartTests: XCTestCase {
         let thirdProduct = Product.stub(id: 3)
         simulateAdding(items: [firstProduct, secondProduct, firstProduct, thirdProduct])
         
-        let expectedInvoice = Invoice(products: [firstProduct, secondProduct, thirdProduct], itemCount: 4, total: 400)
+        let expectedInvoice = CartInvoice(products: [firstProduct, secondProduct, thirdProduct], itemCount: 4, total: 400)
         XCTAssertEqual(subject.invoive, expectedInvoice)
     }
     
@@ -47,12 +47,12 @@ class CartTests: XCTestCase {
         
         subject.remove(firstProduct)
         
-        let expectedInvoice = Invoice(products: [firstProduct, secondProduct, thirdProduct], itemCount: 3, total: 300)
+        let expectedInvoice = CartInvoice(products: [firstProduct, secondProduct, thirdProduct], itemCount: 3, total: 300)
         XCTAssertEqual(subject.invoive, expectedInvoice)
     }
     
     func test_invoice_whenCarIsEmpry_returnsExpectedInvoice() throws {
-        let expectedInvoice = Invoice(products: [], itemCount: 0, total: 0)
+        let expectedInvoice = CartInvoice(products: [], itemCount: 0, total: 0)
         XCTAssertEqual(subject.invoive, expectedInvoice)
     }
 
@@ -122,8 +122,8 @@ class CartTests: XCTestCase {
         with products: [Product],
         itemCount: Int,
         total: Double
-    ) -> Invoice {
-        Invoice(
+    ) -> CartInvoice {
+        CartInvoice(
             products: products,
             itemCount: itemCount,
             total: total

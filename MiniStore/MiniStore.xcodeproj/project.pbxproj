@@ -28,7 +28,7 @@
 		DE32E1FD280C6918008F5BC2 /* CartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE32E1FC280C6918008F5BC2 /* CartViewController.xib */; };
 		DE32E200280C6B67008F5BC2 /* CartCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE32E1FF280C6B67008F5BC2 /* CartCollectionViewCell.xib */; };
 		DE32E203280C941B008F5BC2 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE32E202280C941B008F5BC2 /* CartViewModel.swift */; };
-		DE32E216280D949E008F5BC2 /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE32E215280D949E008F5BC2 /* Invoice.swift */; };
+		DE32E216280D949E008F5BC2 /* CartInvoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE32E215280D949E008F5BC2 /* CartInvoice.swift */; };
 		DE4EF9D028081A620017B4BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4EF9CF28081A620017B4BB /* AppDelegate.swift */; };
 		DE4EF9D228081A620017B4BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4EF9D128081A620017B4BB /* SceneDelegate.swift */; };
 		DE4EF9D928081A630017B4BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE4EF9D828081A630017B4BB /* Assets.xcassets */; };
@@ -85,7 +85,7 @@
 		DE32E1FC280C6918008F5BC2 /* CartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartViewController.xib; sourceTree = "<group>"; };
 		DE32E1FF280C6B67008F5BC2 /* CartCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartCollectionViewCell.xib; sourceTree = "<group>"; };
 		DE32E202280C941B008F5BC2 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
-		DE32E215280D949E008F5BC2 /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
+		DE32E215280D949E008F5BC2 /* CartInvoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartInvoice.swift; sourceTree = "<group>"; };
 		DE4EF9CC28081A620017B4BB /* MiniStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE4EF9CF28081A620017B4BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE4EF9D128081A620017B4BB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -148,8 +148,10 @@
 			children = (
 				DE283782280828DA0052F565 /* Product */,
 				DE283783280828E30052F565 /* Cart */,
-				DE283784280828F30052F565 /* View */,
 				DE2837C1280BF7DB0052F565 /* Shared */,
+				DE283786280829710052F565 /* MainViewController.swift */,
+				DE283794280842090052F565 /* MainViewController.xib */,
+				DE28379128083CD40052F565 /* TabBarDataSource */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -167,20 +169,11 @@
 		DE283783280828E30052F565 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				DEBA54D7280FD63F004CE225 /* Model */,
 				DE28378A280829E00052F565 /* View */,
 				DE32E201280C93DD008F5BC2 /* ViewModel */,
 			);
 			path = Cart;
-			sourceTree = "<group>";
-		};
-		DE283784280828F30052F565 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				DE283786280829710052F565 /* MainViewController.swift */,
-				DE283794280842090052F565 /* MainViewController.xib */,
-				DE28379128083CD40052F565 /* TabBarDataSource */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		DE283789280829DA0052F565 /* View */ = {
@@ -412,8 +405,15 @@
 			isa = PBXGroup;
 			children = (
 				DE32E1F4280C5274008F5BC2 /* ProductOrder.swift */,
-				DE32E215280D949E008F5BC2 /* Invoice.swift */,
 				DEBA54D3280F381C004CE225 /* ProductQuantity.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DEBA54D7280FD63F004CE225 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DE32E215280D949E008F5BC2 /* CartInvoice.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -560,7 +560,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE283787280829710052F565 /* MainViewController.swift in Sources */,
-				DE32E216280D949E008F5BC2 /* Invoice.swift in Sources */,
+				DE32E216280D949E008F5BC2 /* CartInvoice.swift in Sources */,
 				DE2837AB2808B4620052F565 /* URLSession+URLSessionResourceLoading.swift in Sources */,
 				DEBA54C5280DDD4E004CE225 /* Double+Formatting.swift in Sources */,
 				DE2837B8280998B30052F565 /* ProductsViewModel.swift in Sources */,

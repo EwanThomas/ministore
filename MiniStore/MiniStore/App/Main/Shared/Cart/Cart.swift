@@ -2,8 +2,8 @@ import Combine
 import Foundation
 
 protocol CartInvoicePublishing {
-    var invoicePublisher: PassthroughSubject<Invoice, Never> { get }
-    var invoive: Invoice { get }
+    var invoicePublisher: PassthroughSubject<CartInvoice, Never> { get }
+    var invoive: CartInvoice { get }
 }
 
 protocol ProductStorable {
@@ -24,10 +24,10 @@ final class Cart: ProductStorable, CartInvoicePublishing {
     
     //MARK: Invoiceable
     
-    private(set) var invoicePublisher = PassthroughSubject<Invoice, Never>()
+    private(set) var invoicePublisher = PassthroughSubject<CartInvoice, Never>()
     
-    var invoive: Invoice {
-        Invoice(products: products, itemCount: invoiceItems, total: invoiceTotal)
+    var invoive: CartInvoice {
+        CartInvoice(products: products, itemCount: invoiceItems, total: invoiceTotal)
     }
 
     //MARK: ProductStorable

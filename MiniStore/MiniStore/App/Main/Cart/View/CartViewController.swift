@@ -29,34 +29,29 @@ final class CartViewController: UIViewController {
 }
 
 private extension CartViewController {
-    func bind(to: CartViewModel) {
-        viewModel.$products
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
-                self?.collectionView.reloadData()
-            }.store(in: &subscriptions)
-
-        viewModel.$products
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
-                self?.update()
-            }.store(in: &subscriptions)
-    }
-    
     func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(CartViewController.cellNib, forCellWithReuseIdentifier: ProductViewCell.identifier)
     }
     
-    func viewModel(at indexPath: IndexPath) -> ProductCellViewModel {
-        let product = viewModel.products[indexPath.row]
-        return ProductCellViewModel(product: product)
+    func bind(to: CartViewModel) {
+        viewModel.$products
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.collectionView.reloadData()
+                self?.update()
+            }.store(in: &subscriptions)
     }
     
     func update() {
         itemCountLabel.text = viewModel.numberOfItems
         checkoutTotalLabel.text = viewModel.invoiceTotal
+    }
+    
+    func viewModel(at indexPath: IndexPath) -> ProductCellViewModel {
+        let product = viewModel.products[indexPath.row]
+        return ProductCellViewModel(product: product)
     }
 }
 
