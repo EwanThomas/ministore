@@ -27,7 +27,8 @@ final class Cart: ProductStorable, CartInvoicePublishing {
     private(set) var invoicePublisher = PassthroughSubject<CartInvoice, Never>()
     
     var invoive: CartInvoice {
-        CartInvoice(products: products, itemCount: invoiceItems, total: invoiceTotal)
+        let newCartInvoice = CartInvoice(products: products, itemCount: invoiceItems, total: invoiceTotal)
+        return newCartInvoice
     }
 
     //MARK: ProductStorable
@@ -49,7 +50,9 @@ final class Cart: ProductStorable, CartInvoicePublishing {
     }
 
     func quantity(for product: Product) -> ProductQuantity {
-        ProductQuantity(product: product, quantity: order(for: product)?.quantity ?? 0)
+        let quantity = order(for: product)?.quantity ?? 0
+        let newProductQuantity = ProductQuantity(product: product, quantity: quantity)
+        return newProductQuantity
     }
 }
 
